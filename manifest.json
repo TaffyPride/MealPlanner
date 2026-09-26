@@ -1,0 +1,24 @@
+{
+  "id": "/",
+  "short_name": "MealPlanner",
+  "name": "4-Week Meal Planner & Shopping List",
+  "description": "Interactive offline meal planner, recipe guide, and automated shopping list PWA.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "background_color": "#1a252f",
+  "theme_color": "#1a252f",
+  "display": "standalone",
+  "orientation": "portrait"
+}
