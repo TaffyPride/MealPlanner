@@ -866,16 +866,19 @@
         <div class="shopping-card" id="lunch_card">
             <div class="shopping-header" onclick="toggleCard('lunch_card')">
                 <h2 class="section-title">🥪 Lunch Staples</h2>
-                <span class="chevron"></span>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('lunch')">Reset</button>
+                    <span class="chevron"></span>
+                </div>
             </div>
             <div class="shopping-body">
                 <ul class="staples-grid">
-                    <li><label><input type="checkbox" id="lunch_milk"><span>Milk</span></label></li>
-                    <li><label><input type="checkbox" id="lunch_cheese"><span>Cheddar Cheese</span></label></li>
-                    <li><label><input type="checkbox" id="lunch_ham"><span>Sliced Ham</span></label></li>
-                    <li><label><input type="checkbox" id="lunch_bread"><span>Bread</span></label></li>
-                    <li><label><input type="checkbox" id="lunch_mayo"><span>Mayonnaise</span></label></li>
-                    <li><label><input type="checkbox" id="lunch_mustard"><span>Mustard</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="lunch_milk"><span>Milk</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="lunch_cheese"><span>Cheddar Cheese</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="lunch_ham"><span>Sliced Ham</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="lunch_bread"><span>Bread</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="lunch_mayo"><span>Mayonnaise</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="lunch_mustard"><span>Mustard</span></label></li>
                 </ul>
             </div>
         </div>
@@ -883,41 +886,46 @@
         <div class="shopping-card" id="staples_card">
             <div class="shopping-header" onclick="toggleCard('staples_card')">
                 <h2 class="section-title">🧂 Pantry Staples</h2>
-                <span class="chevron"></span>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('staple')">Reset</button>
+                    <span class="chevron"></span>
+                </div>
             </div>
             <div class="shopping-body">
                 <ul class="staples-grid">
-                    <li><label><input type="checkbox" id="staple_oil"><span>Cooking Oil</span></label></li>
-                    <li><label><input type="checkbox" id="staple_soysauce"><span>Soy Sauce</span></label></li>
-                    <li><label><input type="checkbox" id="staple_lea"><span>Lea & Perrins</span></label></li>
-                    <li><label><input type="checkbox" id="staple_hpbbq"><span>HP Honey BBQ</span></label></li>
-                    <li><label><input type="checkbox" id="staple_butter"><span>Butter</span></label></li>
-                    <li><label><input type="checkbox" id="staple_garlic"><span>Garlic Powder</span></label></li>
-                    <li><label><input type="checkbox" id="staple_gravy"><span>Gravy Granules</span></label></li>
-                    <li><label><input type="checkbox" id="staple_flour"><span>Plain Flour</span></label></li>
-                    <li><label><input type="checkbox" id="staple_honey"><span>Honey</span></label></li>
-                    <li><label><input type="checkbox" id="staple_milk"><span>Milk</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_oil"><span>Cooking Oil</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_soysauce"><span>Soy Sauce</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_lea"><span>Lea & Perrins</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_hpbbq"><span>HP Honey BBQ</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="staple_butter"><span>Butter</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_garlic"><span>Garlic Powder</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_gravy"><span>Gravy Granules</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_flour"><span>Plain Flour</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_honey"><span>Honey</span></label></li>
                 </ul>
             </div>
         </div>
-        
+
         <div class="shopping-card" id="cleaning_card">
             <div class="shopping-header" onclick="toggleCard('cleaning_card')">
                 <h2 class="section-title">🧽 Cleaning Staples</h2>
-                <span class="chevron"></span>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('clean')">Reset</button>
+                    <span class="chevron"></span>
+                </div>
             </div>
             <div class="shopping-body">
                 <ul class="staples-grid">
-                    <li><label><input type="checkbox" id="clean_washingup"><span>Washing-up Liquid</span></label></li>
-                    <li><label><input type="checkbox" id="clean_sponges"><span>Sponges / Scourers</span></label></li>
-                    <li><label><input type="checkbox" id="clean_surf_spray"><span>Surface Spray</span></label></li>
-                    <li><label><input type="checkbox" id="clean_binbags"><span>Bin Bags</span></label></li>
-                    <li><label><input type="checkbox" id="clean_dishwasher"><span>Dishwasher Tablets</span></label></li>
-                    <li><label><input type="checkbox" id="clean_toilet"><span>Toilet Cleaner</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_washingup"><span>Washing-up Liquid</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_sponges"><span>Sponges / Scourers</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_surf_spray"><span>Surface Spray</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_binbags"><span>Bin Bags</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_dishwasher"><span>Dishwasher Tablets</span></label></li>
+                    <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_toilet"><span>Toilet Cleaner</span></label></li>
                 </ul>
             </div>
         </div>
-        
+
         <button class="share-btn" onclick="copyShoppingList()">📋 Share / Copy Shopping List</button>
 
         <div class="shopping-grid">
@@ -934,12 +942,12 @@
                 <ul id="shop_cat_chilled"></ul>
             </div>
             <div class="category-card">
-                <h3>Pantry</h3>
+                <h3>Pantry & Household</h3>
                 <ul id="shop_cat_pantry"></ul>
             </div>
         </div>
         <div id="shopping_empty" class="empty-state">
-            No items selected. Select ingredients from Week 1-4 or add custom items above!
+            No items selected. Select ingredients from Week 1-4, staple items, or add custom items above!
         </div>
     </div>
 
@@ -2796,12 +2804,22 @@
         }
     }
 
+    function resetStapleGroup(prefix) {
+        triggerHaptic();
+        const checkboxes = document.querySelectorAll(`input[type="checkbox"][id^="${prefix}_"]`);
+        checkboxes.forEach(cb => {
+            cb.checked = false;
+            localStorage.removeItem(cb.id);
+        });
+        renderShoppingTab();
+    }
+
     function renderShoppingTab() {
         const categories = {
             meat: { ul: document.getElementById('shop_cat_meat'), title: 'Meat & Poultry' },
             produce: { ul: document.getElementById('shop_cat_produce'), title: 'Produce' },
             chilled: { ul: document.getElementById('shop_cat_chilled'), title: 'Chilled, Dairy & Frozen' },
-            pantry: { ul: document.getElementById('shop_cat_pantry'), title: 'Pantry' }
+            pantry: { ul: document.getElementById('shop_cat_pantry'), title: 'Pantry & Household' }
         };
 
         Object.values(categories).forEach(c => c.ul.innerHTML = '');
@@ -2892,7 +2910,7 @@
             { id: 'shop_cat_meat', title: 'Meat & Poultry' },
             { id: 'shop_cat_produce', title: 'Produce' },
             { id: 'shop_cat_chilled', title: 'Chilled, Dairy & Frozen' },
-            { id: 'shop_cat_pantry', title: 'Pantry' }
+            { id: 'shop_cat_pantry', title: 'Pantry & Household' }
         ];
 
         let textList = "🛒 Shopping List\n";
