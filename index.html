@@ -2613,6 +2613,7 @@
         let hasRice = lowerIngs.some(i => i.includes('rice'));
         let hasPasta = lowerIngs.some(i => i.includes('pasta') || i.includes('macaroni') || i.includes('spaghetti') || i.includes('tagliatelle'));
         let hasPotato = lowerIngs.some(i => i.includes('potato') || i.includes('spud'));
+        let hasBreakfast = lowerIngs.some(i => i.includes('egg') || i.includes('bacon') || i.includes('bread') || i.includes('sausage'));
 
         let title = "Custom Fridge-Clearing Skillet / Traybake";
         let badge = "AI CHEF • QUICK BATCH";
@@ -2623,10 +2624,21 @@
             ingHtml += `<li><label><input type="checkbox" class="ing-check" data-cat="pantry" checked><span>${item}</span></label></li>`;
         });
         
-        if (!lowerIngs.some(i => i.includes('oil'))) ingHtml += `<li><label><input type="checkbox" class="ing-check" data-cat="pantry"><span>1 tbsp Cooking Oil</span></label></li>`;
+        if (!lowerIngs.some(i => i.includes('oil') || i.includes('butter'))) ingHtml += `<li><label><input type="checkbox" class="ing-check" data-cat="chilled"><span>15g Butter or Oil</span></label></li>`;
         if (!lowerIngs.some(i => i.includes('salt') || i.includes('pepper'))) ingHtml += `<li><label><input type="checkbox" class="ing-check" data-cat="pantry"><span>Salt & Pepper</span></label></li>`;
 
-        if (hasRice || style === 'friedrice') {
+        if (hasBreakfast && (lowerIngs.some(i => i.includes('egg')) || lowerIngs.some(i => i.includes('bacon')) || lowerIngs.some(i => i.includes('bread')))) {
+            title = "Loaded Breakfast Hash, Bacon, Eggs & Toast";
+            badge = "HOB & AIR FRY • 10 MINS";
+            stepsHtml = `
+                <ol>
+                    <li><strong>Air Fry or Fry Bacon:</strong> Place your bacon in the air fryer at 180°C for 8–10 minutes (or fry in a pan) until crisp. If using Lea & Perrins, splash a few drops over the bacon halfway through.</li>
+                    <li><strong>Toast Bread:</strong> Pop your bread in the air fryer or toaster until golden and crisp, then butter it.</li>
+                    <li><strong>Cook Eggs:</strong> Fry or scramble your eggs in a pan on the hob with a bit of butter or oil until cooked to your liking.</li>
+                    <li><strong>Serve:</strong> Plate up your crispy bacon, eggs, and toast together for a quick, satisfying meal!</li>
+                </ol>
+            `;
+        } else if (hasRice || style === 'friedrice') {
             title = "Savory Fridge-Clearing Egg Fried Rice Skillet";
             badge = "HOB • STIR-FRY • 15 MINS";
             stepsHtml = `
