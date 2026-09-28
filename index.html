@@ -882,7 +882,7 @@
 
         <div class="shopping-card" id="staples_card">
             <div class="shopping-header" onclick="toggleCard('staples_card')">
-                <h2 class="section-title">🧂 Pantry Staples (Always Check)</h2>
+                <h2 class="section-title">🧂 Pantry Staples</h2>
                 <span class="chevron"></span>
             </div>
             <div class="shopping-body">
@@ -896,10 +896,28 @@
                     <li><label><input type="checkbox" id="staple_gravy"><span>Gravy Granules</span></label></li>
                     <li><label><input type="checkbox" id="staple_flour"><span>Plain Flour</span></label></li>
                     <li><label><input type="checkbox" id="staple_honey"><span>Honey</span></label></li>
+                    <li><label><input type="checkbox" id="staple_milk"><span>Milk</span></label></li>
                 </ul>
             </div>
         </div>
-
+        
+        <div class="shopping-card" id="cleaning_card">
+            <div class="shopping-header" onclick="toggleCard('cleaning_card')">
+                <h2 class="section-title">🧽 Cleaning Staples</h2>
+                <span class="chevron"></span>
+            </div>
+            <div class="shopping-body">
+                <ul class="staples-grid">
+                    <li><label><input type="checkbox" id="clean_washingup"><span>Washing-up Liquid</span></label></li>
+                    <li><label><input type="checkbox" id="clean_sponges"><span>Sponges / Scourers</span></label></li>
+                    <li><label><input type="checkbox" id="clean_surf_spray"><span>Surface Spray</span></label></li>
+                    <li><label><input type="checkbox" id="clean_binbags"><span>Bin Bags</span></label></li>
+                    <li><label><input type="checkbox" id="clean_dishwasher"><span>Dishwasher Tablets</span></label></li>
+                    <li><label><input type="checkbox" id="clean_toilet"><span>Toilet Cleaner</span></label></li>
+                </ul>
+            </div>
+        </div>
+        
         <button class="share-btn" onclick="copyShoppingList()">📋 Share / Copy Shopping List</button>
 
         <div class="shopping-grid">
