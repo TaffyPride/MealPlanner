@@ -10,7 +10,7 @@
     <meta name="apple-mobile-web-app-title" content="Meal Planner">
     <title>4-Week Meal Planner</title>
 
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <style>
         :root {
@@ -49,7 +49,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        button, input, select, label {
+        button, input, select, label, textarea {
             touch-action: manipulation;
         }
 
@@ -70,42 +70,37 @@
         header {
             background-color: var(--nav-bg);
             color: #ffffff;
-            padding: 0.8rem 1rem;
+            padding: 0.5rem;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.05rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
         }
 
         .header-actions {
-            display: flex;
-            gap: 0.25rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.35rem;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         .header-btn {
             background-color: rgba(255, 255, 255, 0.15);
             color: #ffffff;
             border: 1px solid rgba(255, 255, 255, 0.25);
-            padding: 0.35rem 0.45rem;
-            border-radius: 20px;
-            font-size: 0.72rem;
+            padding: 0.45rem 0.3rem;
+            border-radius: 8px;
+            font-size: 0.75rem;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 0.15rem;
+            justify-content: center;
+            gap: 0.2rem;
             transition: all 0.2s ease;
             white-space: nowrap;
+            width: 100%;
         }
 
         .header-btn:active {
@@ -138,18 +133,19 @@
             background: none;
             border: none;
             color: #94a3b8;
-            font-size: 0.8rem;
+            font-size: 0.72rem;
             font-weight: 600;
-            padding: 0.4rem 0.2rem;
-            border-radius: 12px;
+            padding: 0.4rem 0.1rem;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 18%;
+            width: 20%;
             height: 50px;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .tab-btn.active {
@@ -309,6 +305,69 @@
             padding: 0 0.4rem;
             margin-left: auto;
             line-height: 1;
+        }
+
+        .chef-textarea {
+            width: 100%;
+            height: 100px;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background-color: var(--subcard-bg);
+            color: var(--text-color);
+            outline: none;
+            resize: vertical;
+            margin-bottom: 0.5rem;
+        }
+
+        .chef-textarea:focus {
+            border-color: var(--accent-color);
+            background-color: var(--card-bg);
+        }
+
+        .chef-options {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .chef-options select {
+            flex-grow: 1;
+            padding: 0.6rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--subcard-bg);
+            color: var(--text-color);
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .generate-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 10px;
+            font-weight: 800;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+            transition: background 0.15s ease;
+        }
+
+        .generate-btn:active {
+            background-color: var(--accent-active);
+            transform: scale(0.98);
+        }
+
+        .chef-results-container {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
         }
 
         .modal-overlay {
@@ -727,11 +786,12 @@
 <body>
 
 <header>
-    <h1>Meal Planner</h1>
     <div class="header-actions">
-        <button class="header-btn" onclick="openAirFryerCheat()">🔥 Air Fryer</button>
-        <button class="header-btn" onclick="openCookingCheat()">🍳 Cooking</button>
+        <button class="header-btn" onclick="openAirFryerCheat()">🔥 Air Fry</button>
+        <button class="header-btn" onclick="openCookingCheat()">🍳 Cook</button>
+        <button class="header-btn" onclick="openSauceCheat()">🍯 Sauces</button>
         <button class="header-btn" onclick="openOvenCheat()">🌡️ Oven</button>
+        <button class="header-btn" onclick="openChefModal()">🧑‍🍳 AI Chef</button>
         <button class="header-btn" onclick="toggleTheme()" id="theme_btn">🌙 Night</button>
     </div>
 </header>
@@ -1548,7 +1608,7 @@
                 <div class="instructions-list">
                     <ol>
                         <li><strong>Parboil Potatoes (Hob):</strong> Boil 400g diced potatoes for 5 minutes; drain.</li>
-                        <li><strong>Air Fry Hash:</strong> Brown 250g mince and 1 diced onion in a pan on hob for 5 minutes. Drain fat. Toss mince and potatoes with 1 tbsp oil. Air fry at 200°C for 12–15 minutes until crispy.</li>
+                        <li><strong>Air Fry Hash:</strong> Brown 250g mince and 1 onion in a pan on hob for 5 minutes. Drain fat. Toss mince and potatoes with 1 tbsp oil. Air fry at 200°C for 12–15 minutes until crispy.</li>
                         <li><strong>Melt Cheese:</strong> Sprinkle over 100g cheese and air fry for 2 minutes.</li>
                     </ol>
                 </div>
@@ -2158,17 +2218,70 @@
                     • 1 stick butter = 115g / 1 tbsp butter = ~15g
                 </p>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sauces & Glazes Cheat Sheet Modal Overlay -->
+<div class="modal-overlay" id="sauce_modal" onclick="closeSauceCheat(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>🍯 Sauces & Glazes Cheat Sheet</h2>
+            <button class="modal-close" onclick="closeSauceCheat()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <div class="cheat-item">
+                <div class="cheat-item-header">
+                    <span class="cheat-title">Honey BBQ Glaze & Dip</span>
+                    <span class="cheat-badge">MEAT & RICE</span>
+                </div>
+                <p class="cheat-desc">
+                    • <strong>Ingredients:</strong> 3 tbsp HP Honey BBQ sauce, 1 tbsp honey, 1 tsp soy sauce, pinch of garlic powder.<br>
+                    • <strong>Method:</strong> Whisk together. Brush onto chicken or pork during the last 5 minutes of air frying for a sticky glaze, or use as a dip.
+                </p>
+            </div>
 
             <div class="cheat-item">
                 <div class="cheat-item-header">
-                    <span class="cheat-title">White Sauce / Roux Base</span>
-                    <span class="cheat-badge">HOB • SAUCES</span>
+                    <span class="cheat-title">Umami Pan Gravy</span>
+                    <span class="cheat-badge">ROASTS & PIES</span>
                 </div>
                 <p class="cheat-desc">
-                    • Melt equal parts butter & flour (e.g., 15g butter + 15g flour).<br>
-                    • Cook 1 min to remove raw flour taste.<br>
-                    • Slowly whisk in 200ml milk over medium heat until smooth and thickened.<br>
-                    • Add cheese off the heat to prevent grainy texture.
+                    • <strong>Ingredients:</strong> 20g beef/chicken gravy granules, 2 tsp Lea & Perrins, 1 tsp soy sauce, 250ml boiling water.<br>
+                    • <strong>Method:</strong> Dissolve granules in boiling water, stir in Worcestershire and soy sauce. Simmer in a pan for 2 minutes.
+                </p>
+            </div>
+
+            <div class="cheat-item">
+                <div class="cheat-item-header">
+                    <span class="cheat-title">Honey-Soy Stir-Fry Sauce</span>
+                    <span class="cheat-badge">RICE & STIR-FRY</span>
+                </div>
+                <p class="cheat-desc">
+                    • <strong>Ingredients:</strong> 2 tbsp soy sauce, 1 tbsp honey, 1 tsp garlic powder, 15ml warm water.<br>
+                    • <strong>Method:</strong> Mix in a cup. Pour directly into your wok or pan during the final 2 minutes of cooking fried rice.
+                </p>
+            </div>
+
+            <div class="cheat-item">
+                <div class="cheat-item-header">
+                    <span class="cheat-title">Classic Cheese Sauce (Roux)</span>
+                    <span class="cheat-badge">PASTA BAKES</span>
+                </div>
+                <p class="cheat-desc">
+                    • <strong>Ingredients:</strong> 15g butter, 15g plain flour, 200ml milk, 70g grated cheddar, 1 tsp Lea & Perrins.<br>
+                    • <strong>Method:</strong> Melt butter, stir in flour (1 min). Gradually whisk in milk until thick. Turn off heat, stir in cheese and Lea & Perrins until melted.
+                </p>
+            </div>
+
+            <div class="cheat-item">
+                <div class="cheat-item-header">
+                    <span class="cheat-title">Garlic Butter Drizzle & Toast</span>
+                    <span class="cheat-badge">SIDES & BREAD</span>
+                </div>
+                <p class="cheat-desc">
+                    • <strong>Ingredients:</strong> 20g softened butter, 1 tsp garlic powder, salt and pepper.<br>
+                    • <strong>Method:</strong> Mix together. Spread on bread for quick garlic toast (air fry at 180°C for 3–4 mins), or melt over hot pork chops.
                 </p>
             </div>
         </div>
@@ -2201,6 +2314,44 @@
     </div>
 </div>
 
+<!-- AI Chef Modal Overlay -->
+<div class="modal-overlay" id="chef_modal" onclick="closeChefModal(event)">
+    <div class="modal-card" onclick="event.stopPropagation()">
+        <div class="modal-header">
+            <h2>🧑‍🍳 AI Recipe Generator</h2>
+            <button class="modal-close" onclick="closeChefModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; color: var(--muted-color);">
+                Type or paste your available ingredients below (comma separated or listed):
+            </p>
+            <textarea id="chef_input" class="chef-textarea" placeholder="e.g. chicken thighs, rice, eggs, soy sauce, broccoli..."></textarea>
+            
+            <div class="chef-options">
+                <select id="chef_appliance">
+                    <option value="any">🔥 Any Appliance / Hob</option>
+                    <option value="airfryer">⚡ Ninja Air Fryer Preferred</option>
+                    <option value="oven">🌡️ Oven Bake</option>
+                </select>
+                <select id="chef_style">
+                    <option value="any">🍽️ Any Style</option>
+                    <option value="friedrice">🍚 Fried Rice / Stir-Fry</option>
+                    <option value="pastabake">🧀 Pasta Bake / Gratin</option>
+                    <option value="hash">🥔 Roast / Hash / Traybake</option>
+                </select>
+            </div>
+
+            <button class="generate-btn" onclick="generateChefRecipe()">✨ Generate Recipe Idea</button>
+
+            <div id="chef_results" class="chef-results-container">
+                <div class="empty-state" style="padding: 1rem 0;">
+                    Enter your ingredients above and tap Generate to conjure up a custom recipe!
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <nav class="bottom-nav">
     <button class="tab-btn active" onclick="openTab('shopping', this)">
         <span>Shopping</span>
@@ -2220,9 +2371,9 @@
 </nav>
 
 <script>
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js').catch((err) => {
+            navigator.serviceWorker.register('sw.js').catch((err) => {
                 console.error('ServiceWorker registration failed: ', err);
             });
         });
@@ -2276,6 +2427,15 @@
         document.getElementById('cooking_modal').classList.remove('active');
     }
 
+    function openSauceCheat() {
+        triggerHaptic();
+        document.getElementById('sauce_modal').classList.add('active');
+    }
+
+    function closeSauceCheat(event) {
+        document.getElementById('sauce_modal').classList.remove('active');
+    }
+
     function openOvenCheat() {
         triggerHaptic();
         document.getElementById('oven_modal').classList.add('active');
@@ -2284,6 +2444,15 @@
 
     function closeOvenCheat(event) {
         document.getElementById('oven_modal').classList.remove('active');
+    }
+
+    function openChefModal() {
+        triggerHaptic();
+        document.getElementById('chef_modal').classList.add('active');
+    }
+
+    function closeChefModal(event) {
+        document.getElementById('chef_modal').classList.remove('active');
     }
 
     const GAS_TO_CONVENTIONAL = {
@@ -2429,35 +2598,145 @@
         }
     }
 
-    const DAY_NAMES = {
-        d1: 'Mon',
-        d2: 'Tue',
-        d3: 'Wed',
-        d4: 'Thu',
-        d5: 'Fri',
-        d6: 'Sat',
-        d7: 'Sun'
-    };
+    function generateChefRecipe() {
+        triggerHaptic();
+        const rawInput = document.getElementById('chef_input').value.trim();
+        const appliance = document.getElementById('chef_appliance').value;
+        const style = document.getElementById('chef_style').value;
+        const resultsContainer = document.getElementById('chef_results');
+
+        if (!rawInput) {
+            resultsContainer.innerHTML = `<div class="empty-state" style="color:#ef4444; padding:1rem 0;">Please enter at least a couple of ingredients first!</div>`;
+            return;
+        }
+
+        const ingredients = rawInput.split(/[\n,]+/).map(i => i.trim()).filter(i => i.length > 0);
+        const lowerIngs = ingredients.map(i => i.toLowerCase());
+
+        let hasRice = lowerIngs.some(i => i.includes('rice'));
+        let hasPasta = lowerIngs.some(i => i.includes('pasta') || i.includes('macaroni') || i.includes('spaghetti') || i.includes('tagliatelle'));
+        let hasPotato = lowerIngs.some(i => i.includes('potato') || i.includes('spud'));
+
+        let title = "Custom Fridge-Clearing Skillet / Traybake";
+        let badge = "AI CHEF • QUICK BATCH";
+        let ingHtml = '';
+        let stepsHtml = '';
+
+        ingredients.forEach(item => {
+            ingHtml += `<li><label><input type="checkbox" class="ing-check" data-cat="pantry" checked><span>${item}</span></label></li>`;
+        });
+        
+        if (!lowerIngs.some(i => i.includes('oil'))) ingHtml += `<li><label><input type="checkbox" class="ing-check" data-cat="pantry"><span>1 tbsp Cooking Oil</span></label></li>`;
+        if (!lowerIngs.some(i => i.includes('salt') || i.includes('pepper'))) ingHtml += `<li><label><input type="checkbox" class="ing-check" data-cat="pantry"><span>Salt & Pepper</span></label></li>`;
+
+        if (hasRice || style === 'friedrice') {
+            title = "Savory Fridge-Clearing Egg Fried Rice Skillet";
+            badge = "HOB • STIR-FRY • 15 MINS";
+            stepsHtml = `
+                <ol>
+                    <li><strong>Prep & Cook Base:</strong> If using raw protein, dice finely and fry in 1 tbsp oil in a hot pan or wok for 6–8 minutes until cooked through. Remove and set aside.</li>
+                    <li><strong>Eggs:</strong> In the same pan, scramble 2 eggs quickly, then break them up.</li>
+                    <li><strong>Stir-Fry:</strong> Toss in your chopped vegetables and cooked cold rice. Stir-fry on high heat for 3–4 minutes until piping hot.</li>
+                    <li><strong>Finish:</strong> Stir your protein back in with a splash of soy sauce or HP Honey BBQ sauce. Toss for 2 minutes and serve hot!</li>
+                </ol>
+            `;
+        } else if (hasPasta || style === 'pastabake') {
+            title = "Loaded Quick Cheese & Protein Pasta Bake";
+            badge = "AIR FRY / OVEN • 20 MINS";
+            stepsHtml = `
+                <ol>
+                    <li><strong>Boil Pasta:</strong> Boil your pasta in salted boiling water for 8 minutes, adding any chopped green veg for the last 3 minutes. Drain.</li>
+                    <li><strong>Brown Protein & Sauce:</strong> Fry your meat/bacon in a pan until crisp. Stir in a splash of milk and grated cheese until melted into a quick sauce.</li>
+                    <li><strong>Bake:</strong> Combine pasta, protein, and sauce in an air-fryer or ovenproof dish. Top generously with remaining cheese.</li>
+                    <li><strong>Crisp Top:</strong> Air fry at 180°C for 6–8 minutes until bubbly and golden.</li>
+                </ol>
+            `;
+        } else if (hasPotato || style === 'hash') {
+            title = "Crispy Air-Fried Potato, Meat & Cheese Hash";
+            badge = "AIR FRY • 200°C • 18 MINS";
+            stepsHtml = `
+                <ol>
+                    <li><strong>Parboil Spuds:</strong> Dice potatoes into small cubes and microwave or boil for 5 minutes; drain well.</li>
+                    <li><strong>Air Fry:</strong> Toss potatoes and any diced meat/veg in 1 tbsp oil, salt, and pepper. Air fry at 200°C for 15–18 minutes, shaking the basket every 5 minutes.</li>
+                    <li><strong>Crisp & Melt:</strong> Top with grated cheese during the final 2 minutes until bubbling.</li>
+                </ol>
+            `;
+        } else {
+            title = "Garlic-Glazed Protein & Veg Traybake";
+            badge = "AIR FRY / ROAST • 25 MINS";
+            stepsHtml = `
+                <ol>
+                    <li><strong>Prep & Season:</strong> Chop all your available ingredients into even bite-sized pieces. Toss in 1 tbsp oil, garlic powder, salt, and pepper.</li>
+                    <li><strong>Cook:</strong> Place in your Ninja air fryer basket or roasting tray. Cook at 190°C for 18–22 minutes, shaking or turning halfway through.</li>
+                    <li><strong>Glaze & Serve:</strong> Drizzle with honey, soy sauce, or BBQ sauce in the final 2 minutes for an extra flavor boost.</li>
+                </ol>
+            `;
+        }
+
+        resultsContainer.innerHTML = `
+            <div class="meal-card open" style="border: 2px solid var(--accent-color); margin-top:0.75rem;">
+                <div class="meal-header">
+                    <div class="meal-header-clickable">
+                        <h3 class="meal-title">${title}</h3>
+                        <span class="cheat-badge">${badge}</span>
+                    </div>
+                </div>
+                <div class="meal-body" style="display: block;">
+                    <div class="ingredients-box">
+                        <strong>Generated Recipe Ingredients:</strong>
+                        <ul>
+                            ${ingHtml}
+                        </ul>
+                    </div>
+                    <div class="instructions-list">
+                        ${stepsHtml}
+                    </div>
+                    <button class="share-btn" style="margin-top:0.75rem;" onclick="addChefIngredientsToList(this)">🛒 Add Missing Ingredients to Shopping List</button>
+                </div>
+            </div>
+        `;
+    }
+
+    function addChefIngredientsToList(btn) {
+        triggerHaptic();
+        const mealCard = btn.closest('.meal-card');
+        const checkboxes = mealCard.querySelectorAll('.ing-check');
+        const customExtras = getCustomExtras();
+        
+        let addedCount = 0;
+        checkboxes.forEach(cb => {
+            const text = cb.nextElementSibling.textContent.trim();
+            if (!customExtras.some(e => e.text.toLowerCase() === text.toLowerCase())) {
+                customExtras.push({
+                    id: 'extra_' + Date.now() + Math.random().toString(36).substring(2, 5),
+                    text: text,
+                    cat: 'pantry'
+                });
+                addedCount++;
+            }
+        });
+
+        saveCustomExtras(customExtras);
+        renderShoppingTab();
+        alert(`Successfully added ${addedCount} ingredient(s) to your Active Shopping List!`);
+    }
+
+    const DAY_NAMES = { d1: 'Mon', d2: 'Tue', d3: 'Wed', d4: 'Thu', d5: 'Fri', d6: 'Sat', d7: 'Sun' };
 
     function parseIngredientDetails(rawText) {
         let text = rawText.replace(/\(.*?\)/g, '').trim();
-        
         const weightMatch = text.match(/^([\d\.]+)\s*(g|kg|ml)\b/i);
         let grams = 0;
-
         if (weightMatch) {
             let num = parseFloat(weightMatch[1]);
             let unit = weightMatch[2].toLowerCase();
             grams = (unit === 'kg') ? num * 1000 : num;
         }
-
         let baseName = text
             .replace(/^[\d\.\/]+(?:\s*[\-\–]\s*[\d\.\/]+)?\s*(?:g|kg|ml|l|tbsp|tsp|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves)?\b/i, '')
             .replace(/\b(diced|sliced|cubed|shredded|batons|wedges|thin|grated|cooked and cooled|cooked|beaten)\b/i, '')
             .trim();
-
         baseName = baseName.replace(/\b\w/g, c => c.toUpperCase()) || rawText;
-
         return { baseName, grams };
     }
 
@@ -2467,35 +2746,6 @@
             const parts = mealCard.id.replace('card_', '').split('_');
             if (parts.length >= 2) {
                 return [DAY_NAMES[parts[1]] || parts[1].toUpperCase()];
-            }
-        }
-
-        if (element.id && element.id.includes('_')) {
-            const parts = element.id.split('_');
-            const weekId = parts[0];
-            const weekTab = document.getElementById('week' + weekId.replace('w', ''));
-            const rawText = element.nextElementSibling ? element.nextElementSibling.textContent : '';
-            const targetBase = parseIngredientDetails(rawText).baseName.toLowerCase();
-
-            if (weekTab) {
-                const tags = [];
-                const recipeChecks = weekTab.querySelectorAll('.meal-card .ing-check');
-                recipeChecks.forEach(rcb => {
-                    const rText = rcb.nextElementSibling ? rcb.nextElementSibling.textContent : '';
-                    if (parseIngredientDetails(rText).baseName.toLowerCase() === targetBase) {
-                        const rCard = rcb.closest('.meal-card');
-                        if (rCard && rCard.id) {
-                            const rParts = rCard.id.replace('card_', '').split('_');
-                            if (rParts.length >= 2) {
-                                const dayName = DAY_NAMES[rParts[1]] || rParts[1].toUpperCase();
-                                if (!tags.includes(dayName)) {
-                                    tags.push(dayName);
-                                }
-                            }
-                        }
-                    }
-                });
-                return tags;
             }
         }
         return [];
@@ -2515,17 +2765,13 @@
         const input = document.getElementById('extra_item_input');
         const catSelect = document.getElementById('extra_item_cat');
         const text = input.value.trim();
-
         if (!text) return;
-
         const extras = getCustomExtras();
-        const newItem = {
+        extras.push({
             id: 'extra_' + Date.now(),
             text: text.replace(/\b\w/g, c => c.toUpperCase()),
             cat: catSelect.value
-        };
-
-        extras.push(newItem);
+        });
         saveCustomExtras(extras);
         input.value = '';
         renderShoppingTab();
@@ -2533,8 +2779,7 @@
 
     function removeExtraItem(id) {
         triggerHaptic();
-        let extras = getCustomExtras();
-        extras = extras.filter(item => item.id !== id);
+        let extras = getCustomExtras().filter(item => item.id !== id);
         saveCustomExtras(extras);
         localStorage.removeItem('shop_check_' + id);
         renderShoppingTab();
@@ -2545,12 +2790,10 @@
         const weekTab = document.getElementById(weekId);
         const checkboxes = weekTab.querySelectorAll('.ing-check');
         const allChecked = Array.from(checkboxes).every(cb => cb.checked);
-
         checkboxes.forEach(cb => {
             cb.checked = !allChecked;
             localStorage.setItem(cb.id, !allChecked);
         });
-
         renderShoppingTab();
     }
 
@@ -2563,7 +2806,6 @@
         };
 
         Object.values(categories).forEach(c => c.ul.innerHTML = '');
-
         const checkedIngredients = document.querySelectorAll('.ing-check:checked');
         const customExtras = getCustomExtras();
         const emptyState = document.getElementById('shopping_empty');
@@ -2575,29 +2817,18 @@
         }
 
         const itemMap = {};
-
         checkedIngredients.forEach(cb => {
-            const cat = cb.getAttribute('data-cat');
-            const rawLabelText = cb.nextElementSibling.textContent;
+            const cat = cb.getAttribute('data-cat') || 'pantry';
+            const rawLabelText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
             const { baseName, grams } = parseIngredientDetails(rawLabelText);
             const tags = getWeekDayTag(cb);
             const key = cat + '_' + baseName.toLowerCase();
-
             const isTopOverview = cb.id && !cb.id.includes('_d') && !cb.id.includes('_i');
 
             if (!itemMap[key]) {
-                itemMap[key] = { 
-                    baseName: baseName, 
-                    cat: cat, 
-                    totalGrams: grams, 
-                    hasTopCheck: isTopOverview,
-                    ids: [cb.id], 
-                    tags: [...tags], 
-                    isCustom: false 
-                };
+                itemMap[key] = { baseName: baseName, cat: cat, totalGrams: grams, hasTopCheck: isTopOverview, ids: [cb.id], tags: [...tags], isCustom: false };
             } else {
                 itemMap[key].ids.push(cb.id);
-                
                 if (!itemMap[key].hasTopCheck) {
                     if (isTopOverview) {
                         itemMap[key].totalGrams = grams;
@@ -2606,12 +2837,7 @@
                         itemMap[key].totalGrams += grams;
                     }
                 }
-
-                tags.forEach(t => {
-                    if (!itemMap[key].tags.includes(t)) {
-                        itemMap[key].tags.push(t);
-                    }
-                });
+                tags.forEach(t => { if (!itemMap[key].tags.includes(t)) itemMap[key].tags.push(t); });
             }
         });
 
@@ -2632,21 +2858,10 @@
 
             let weightPrefix = '';
             if (item.totalGrams > 0) {
-                if (item.totalGrams >= 1000) {
-                    weightPrefix = (item.totalGrams / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ';
-                } else {
-                    weightPrefix = item.totalGrams + 'g ';
-                }
+                weightPrefix = item.totalGrams >= 1000 ? (item.totalGrams / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' : item.totalGrams + 'g ';
             }
 
-            let deleteBtn = '';
-            if (item.isCustom) {
-                const customId = item.ids.find(id => id.startsWith('extra_'));
-                if (customId) {
-                    deleteBtn = `<button class="delete-item-btn" onclick="removeExtraItem('${customId}')" title="Delete Extra">&times;</button>`;
-                }
-            }
-
+            let deleteBtn = item.isCustom ? `<button class="delete-item-btn" onclick="removeExtraItem('${item.ids.find(id => id.startsWith('extra_'))}')" title="Delete Extra">&times;</button>` : '';
             const tagDisplay = item.tags.length > 0 ? ` <small style="color:var(--accent-color); font-weight:bold;">(${item.tags.join(', ')})</small>` : '';
 
             li.innerHTML = `
@@ -2657,27 +2872,19 @@
                 ${deleteBtn}
             `;
 
-            if (categories[item.cat]) {
-                categories[item.cat].ul.appendChild(li);
-            }
+            if (categories[item.cat]) categories[item.cat].ul.appendChild(li);
         });
 
         Object.keys(categories).forEach(cat => {
             const card = categories[cat].ul.closest('.category-card');
-            if (categories[cat].ul.children.length === 0) {
-                card.style.display = 'none';
-            } else {
-                card.style.display = 'block';
-            }
+            card.style.display = categories[cat].ul.children.length === 0 ? 'none' : 'block';
         });
     }
 
     function toggleShopItemDone(shopItemId) {
         triggerHaptic();
         const cb = document.getElementById(shopItemId);
-        if (cb) {
-            localStorage.setItem(shopItemId, cb.checked);
-        }
+        if (cb) localStorage.setItem(shopItemId, cb.checked);
     }
 
     function copyShoppingList() {
@@ -2711,61 +2918,33 @@
         }
 
         if (navigator.share) {
-            navigator.share({
-                title: 'Shopping List',
-                text: textList
-            }).catch(() => {});
+            navigator.share({ title: 'Shopping List', text: textList }).catch(() => {});
         } else {
-            navigator.clipboard.writeText(textList).then(() => {
-                alert('Shopping list copied to clipboard!');
-            }).catch(() => {
-                alert('Failed to copy. Please copy manually.');
-            });
+            navigator.clipboard.writeText(textList).then(() => alert('Shopping list copied to clipboard!')).catch(() => alert('Failed to copy.'));
         }
     }
 
     document.addEventListener('DOMContentLoaded', () => {
         applySavedTheme();
 
-        const calcInputs = document.querySelectorAll('.calc-input');
-        calcInputs.forEach(input => {
+        document.querySelectorAll('.calc-input').forEach(input => {
             input.addEventListener('focus', function() { this.select(); });
-            input.addEventListener('keydown', function(e) { 
-                if (e.key === 'Enter') { 
-                    this.blur(); 
-                    e.preventDefault(); 
-                } 
-            });
+            input.addEventListener('keydown', function(e) { if (e.key === 'Enter') { this.blur(); e.preventDefault(); } });
         });
 
-        const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach(cb => {
-            const savedState = localStorage.getItem(cb.id);
-            if (savedState === 'true') {
-                cb.checked = true;
-            }
-            
+        document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+            if (localStorage.getItem(cb.id) === 'true') cb.checked = true;
             cb.addEventListener('change', (e) => {
                 triggerHaptic();
                 localStorage.setItem(e.target.id, e.target.checked);
-                if (e.target.classList.contains('ing-check')) {
-                    renderShoppingTab();
-                }
+                if (e.target.classList.contains('ing-check')) renderShoppingTab();
             });
         });
 
-        const collapsibleCards = document.querySelectorAll('.meal-card, .shopping-card');
-        collapsibleCards.forEach(card => {
-            const savedCollapseState = localStorage.getItem('collapse_' + card.id);
-            if (savedCollapseState === 'true') {
-                card.classList.add('open');
-            } else if (savedCollapseState === 'false') {
-                card.classList.remove('open');
-            } else {
-                if (card.id.endsWith('_d1')) {
-                    card.classList.add('open');
-                }
-            }
+        document.querySelectorAll('.meal-card, .shopping-card').forEach(card => {
+            const savedState = localStorage.getItem('collapse_' + card.id);
+            if (savedState === 'true') card.classList.add('open');
+            else card.classList.remove('open');
         });
 
         renderShoppingTab();
@@ -2774,10 +2953,7 @@
     function clearAllCheckboxes() {
         triggerHaptic();
         if (confirm('Reset all checked items across all weeks, custom items, and clear shopping list?')) {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(cb => {
-                cb.checked = false;
-            });
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
             localStorage.clear();
             applySavedTheme();
             renderShoppingTab();

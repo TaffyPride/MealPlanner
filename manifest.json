@@ -1,24 +1,17 @@
-{ 
-  "id": "/",
+{
+  "id": "/index.html",
+  "name": "4-Week Meal Planner",
   "short_name": "MealPlanner",
-  "name": "4-Week Meal Planner & Shopping List",
-  "description": "Interactive offline meal planner, recipe guide, and automated shopping list PWA.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#27ae60",
   "icons": [
     {
-      "src": "/icon-192.png",
+      "src": "https://cdn-icons-png.flaticon.com/512/1046/1046784.png",
+      "sizes": "512x512",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "/icon-512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "any maskable"
     }
-  ],
-  "start_url": "/",
-  "scope": "/",
-  "background_color": "#1a252f",
-  "theme_color": "#1a252f",
-  "display": "standalone",
-  "orientation": "portrait"
+  ]
 }
