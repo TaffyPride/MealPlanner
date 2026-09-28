@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -344,11 +344,16 @@
             outline: none;
         }
 
+        .chef-btn-row {
+            display: flex;
+            gap: 0.5rem;
+        }
+
         .generate-btn {
             background-color: var(--accent-color);
             color: white;
             border: none;
-            width: 100%;
+            flex-grow: 1;
             padding: 0.75rem;
             border-radius: 10px;
             font-weight: 800;
@@ -361,6 +366,22 @@
         .generate-btn:active {
             background-color: var(--accent-active);
             transform: scale(0.98);
+        }
+
+        .chef-reset-btn {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.15s ease;
+        }
+
+        .chef-reset-btn:active {
+            background-color: #dc2626;
         }
 
         .chef-results-container {
@@ -2341,7 +2362,10 @@
                 </select>
             </div>
 
-            <button class="generate-btn" onclick="generateChefRecipe()">✨ Generate Recipe Idea</button>
+            <div class="chef-btn-row">
+                <button class="generate-btn" onclick="generateChefRecipe()">✨ Generate Recipe Idea</button>
+                <button class="chef-reset-btn" onclick="resetChefInput()">Reset</button>
+            </div>
 
             <div id="chef_results" class="chef-results-container">
                 <div class="empty-state" style="padding: 1rem 0;">
@@ -2596,6 +2620,17 @@
             const isOpen = card.classList.contains('open');
             localStorage.setItem('collapse_' + cardId, isOpen);
         }
+    }
+
+    function resetChefInput() {
+        triggerHaptic();
+        document.getElementById('chef_input').value = '';
+        document.getElementById('chef_results').innerHTML = `
+            <div class="empty-state" style="padding: 1rem 0;">
+                Enter your ingredients above and tap Generate to conjure up a custom recipe!
+            </div>
+        `;
+        document.getElementById('chef_input').focus();
     }
 
     function generateChefRecipe() {
@@ -2927,9 +2962,14 @@
     document.addEventListener('DOMContentLoaded', () => {
         applySavedTheme();
 
-        document.querySelectorAll('.calc-input').forEach(input => {
+        document.querySelectorAll('.calc-input, .chef-textarea').forEach(input => {
             input.addEventListener('focus', function() { this.select(); });
-            input.addEventListener('keydown', function(e) { if (e.key === 'Enter') { this.blur(); e.preventDefault(); } });
+            input.addEventListener('keydown', function(e) { 
+                if (e.key === 'Enter' && !this.classList.contains('chef-textarea')) { 
+                    this.blur(); 
+                    e.preventDefault(); 
+                } 
+            });
         });
 
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
