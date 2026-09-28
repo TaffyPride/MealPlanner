@@ -2289,47 +2289,6 @@
     </div>
 </div>
 
-<!-- AI Chef Modal Overlay -->
-<div class="modal-overlay" id="chef_modal" onclick="closeChefModal(event)">
-    <div class="modal-card" onclick="event.stopPropagation()">
-        <div class="modal-header">
-            <h2>🧑‍🍳 AI Recipe Generator</h2>
-            <button class="modal-close" onclick="closeChefModal()">&times;</button>
-        </div>
-        <div class="modal-body">
-            <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; color: var(--muted-color);">
-                Type or paste your available ingredients below (comma separated or listed):
-            </p>
-            <textarea id="chef_input" class="chef-textarea" placeholder="e.g. chicken thighs, rice, eggs, soy sauce, broccoli..." oninput="saveChefInput()"></textarea>
-            
-            <div class="chef-options">
-                <select id="chef_appliance">
-                    <option value="any">🔥 Any Appliance / Hob</option>
-                    <option value="airfryer">⚡ Ninja Air Fryer Preferred</option>
-                    <option value="oven">🌡️ Oven Bake</option>
-                </select>
-                <select id="chef_style">
-                    <option value="any">🍽️ Any Style</option>
-                    <option value="friedrice">🍚 Fried Rice / Stir-Fry</option>
-                    <option value="pastabake">🧀 Pasta Bake / Gratin</option>
-                    <option value="hash">🥔 Roast / Hash / Traybake</option>
-                </select>
-            </div>
-
-            <div class="chef-btn-row">
-                <button class="generate-btn" onclick="generateChefRecipe()">✨ Generate Recipe Idea</button>
-                <button class="chef-reset-btn" onclick="resetChefInput()">Reset</button>
-            </div>
-
-            <div id="chef_results" class="chef-results-container">
-                <div class="empty-state" style="padding: 1rem 0;">
-                    Enter your ingredients above and tap Generate to conjure up a custom recipe!
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
 <nav class="bottom-nav">
     <button class="tab-btn active" onclick="openTab('shopping', this)">
         <span>Shopping</span>
