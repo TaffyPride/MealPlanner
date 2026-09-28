@@ -202,6 +202,12 @@
             transform: scale(0.96);
         }
 
+        .week-actions-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
         .add-extra-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -292,7 +298,24 @@
             font-size: 0.8rem;
             font-weight: 600;
             cursor: pointer;
-            margin-bottom: 0.75rem;
+            flex-grow: 1;
+        }
+
+        .reset-week-btn {
+            background-color: #fEE2E2;
+            color: #991B1B;
+            border: 1px solid #FCA5A5;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        body.dark-mode .reset-week-btn {
+            background-color: #7F1D1D;
+            color: #FEE2E2;
+            border-color: #991B1B;
         }
 
         .delete-item-btn {
@@ -915,7 +938,10 @@
                 <span class="chevron"></span>
             </div>
             <div class="shopping-body">
-                <button class="select-all-btn" onclick="toggleSelectAll('week1')">Select All Week 1</button>
+                <div class="week-actions-bar">
+                    <button class="select-all-btn" onclick="toggleSelectAll('week1')">Select All Week 1</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('week1')">Reset Week 1</button>
+                </div>
                 <div class="shopping-grid">
                     <div class="category-card">
                         <h3>Meat & Poultry</h3>
@@ -1213,7 +1239,10 @@
                 <span class="chevron"></span>
             </div>
             <div class="shopping-body">
-                <button class="select-all-btn" onclick="toggleSelectAll('week2')">Select All Week 2</button>
+                <div class="week-actions-bar">
+                    <button class="select-all-btn" onclick="toggleSelectAll('week2')">Select All Week 2</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('week2')">Reset Week 2</button>
+                </div>
                 <div class="shopping-grid">
                     <div class="category-card">
                         <h3>Meat & Poultry</h3>
@@ -1499,7 +1528,10 @@
                 <span class="chevron"></span>
             </div>
             <div class="shopping-body">
-                <button class="select-all-btn" onclick="toggleSelectAll('week3')">Select All Week 3</button>
+                <div class="week-actions-bar">
+                    <button class="select-all-btn" onclick="toggleSelectAll('week3')">Select All Week 3</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('week3')">Reset Week 3</button>
+                </div>
                 <div class="shopping-grid">
                     <div class="category-card">
                         <h3>Meat & Poultry</h3>
@@ -1766,7 +1798,10 @@
                 <span class="chevron"></span>
             </div>
             <div class="shopping-body">
-                <button class="select-all-btn" onclick="toggleSelectAll('week4')">Select All Week 4</button>
+                <div class="week-actions-bar">
+                    <button class="select-all-btn" onclick="toggleSelectAll('week4')">Select All Week 4</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('week4')">Reset Week 4</button>
+                </div>
                 <div class="shopping-grid">
                     <div class="category-card">
                         <h3>Meat & Poultry</h3>
@@ -2346,7 +2381,7 @@
             <p style="margin: 0 0 0.5rem 0; font-size: 0.88rem; color: var(--muted-color);">
                 Type or paste your available ingredients below (comma separated or listed):
             </p>
-            <textarea id="chef_input" class="chef-textarea" placeholder="e.g. chicken thighs, rice, eggs, soy sauce, broccoli..."></textarea>
+            <textarea id="chef_input" class="chef-textarea" placeholder="e.g. chicken thighs, rice, eggs, soy sauce, broccoli..." oninput="saveChefInput()"></textarea>
             
             <div class="chef-options">
                 <select id="chef_appliance">
@@ -2473,10 +2508,17 @@
     function openChefModal() {
         triggerHaptic();
         document.getElementById('chef_modal').classList.add('active');
+        const savedChefText = localStorage.getItem('chef_input_draft') || '';
+        document.getElementById('chef_input').value = savedChefText;
     }
 
     function closeChefModal(event) {
         document.getElementById('chef_modal').classList.remove('active');
+    }
+
+    function saveChefInput() {
+        const text = document.getElementById('chef_input').value;
+        localStorage.setItem('chef_input_draft', text);
     }
 
     const GAS_TO_CONVENTIONAL = {
@@ -2625,6 +2667,7 @@
     function resetChefInput() {
         triggerHaptic();
         document.getElementById('chef_input').value = '';
+        localStorage.removeItem('chef_input_draft');
         document.getElementById('chef_results').innerHTML = `
             <div class="empty-state" style="padding: 1rem 0;">
                 Enter your ingredients above and tap Generate to conjure up a custom recipe!
@@ -2832,6 +2875,19 @@
         renderShoppingTab();
     }
 
+    function resetSingleWeek(weekId) {
+        triggerHaptic();
+        if (confirm(`Reset all checkboxes for ${weekId.toUpperCase()}?`)) {
+            const weekTab = document.getElementById(weekId);
+            const checkboxes = weekTab.querySelectorAll('.ing-check');
+            checkboxes.forEach(cb => {
+                cb.checked = false;
+                localStorage.removeItem(cb.id);
+            });
+            renderShoppingTab();
+        }
+    }
+
     function renderShoppingTab() {
         const categories = {
             meat: { ul: document.getElementById('shop_cat_meat'), title: 'Meat & Poultry' },
@@ -2933,6 +2989,7 @@
 
         let textList = "🛒 Shopping List\n";
         let hasItems = false;
+        let itemCount = 0;
 
         categories.forEach(cat => {
             const ul = document.getElementById(cat.id);
@@ -2941,6 +2998,7 @@
                 hasItems = true;
                 textList += `\n--- ${cat.title} ---\n`;
                 items.forEach(span => {
+                    itemCount++;
                     const isDone = span.previousElementSibling.checked;
                     textList += `${isDone ? '[X]' : '[ ]'} ${span.textContent}\n`;
                 });
@@ -2955,7 +3013,7 @@
         if (navigator.share) {
             navigator.share({ title: 'Shopping List', text: textList }).catch(() => {});
         } else {
-            navigator.clipboard.writeText(textList).then(() => alert('Shopping list copied to clipboard!')).catch(() => alert('Failed to copy.'));
+            navigator.clipboard.writeText(textList).then(() => alert(`Copied ${itemCount} items to clipboard!`)).catch(() => alert('Failed to copy.'));
         }
     }
 
