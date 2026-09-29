@@ -803,10 +803,7 @@
         <div class="shopping-card" id="staples_card">
             <div class="shopping-header" onclick="toggleCard('staples_card')">
                 <h2 class="section-title">🧂 Pantry Staples</h2>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('staple')">Reset</button>
-                    <span class="chevron"></span>
-                </div>
+                <span class="chevron"></span>
             </div>
             <div class="shopping-body">
                 <ul class="staples-grid">
@@ -819,17 +816,17 @@
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_gravy"><span>Gravy Granules</span></label></li>
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_flour"><span>Plain Flour</span></label></li>
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_honey"><span>Honey</span></label></li>
-                </ul>
+                </ul>               
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('staple')">Reset</button>
+                </div>
             </div>
         </div>
 
         <div class="shopping-card" id="cleaning_card">
             <div class="shopping-header" onclick="toggleCard('cleaning_card')">
                 <h2 class="section-title">🧽 Cleaning Staples</h2>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('clean')">Reset</button>
-                    <span class="chevron"></span>
-                </div>
+                <span class="chevron"></span>
             </div>
             <div class="shopping-body">
                 <ul class="staples-grid">
@@ -840,6 +837,9 @@
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_dishwasher"><span>Dishwasher Tablets</span></label></li>
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="clean_toilet"><span>Toilet Cleaner</span></label></li>
                 </ul>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('clean')">Reset</button>
+                </div>
             </div>
         </div>
 
@@ -949,13 +949,16 @@
                         <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d1_i1"><span>300g Chicken Thighs</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i2"><span>150g White Rice</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d1_i3"><span>150g Frozen Mixed Veg</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i4"><span>1 tbsp Oil, Salt, Pepper, Garlic Powder</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i4"><span>1 tbsp Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i5"><span>Salt</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i6"><span>Pepper</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i7"><span>Garlic Powder</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
                         <li><strong>Prep Chicken:</strong> Pat 300g chicken thighs completely dry with kitchen towel. Rub evenly with 1 tbsp cooking oil, 1 tsp garlic powder, salt, and black pepper.</li>
-                        <li><strong>Air Fry Chicken:</strong> Place the chicken thighs in **Zone 1 (Left Drawer)** of your DualZone air fryer. Set to **Air Fry at 200°C for 18–20 minutes**, flipping them halfway through to ensure an extra-crispy skin.</li>
+                        <li><strong>Air Fry Chicken:</strong> Place the chicken thighs in Zone 1 (Air Fry @ 200°C for 18–20 minutes) flipping them halfway through to ensure an extra-crispy skin.</li>
                         <li><strong>Cook Rice:</strong> Rinse 150g white rice under cold water until it runs clear. Combine in a saucepan with 300ml cold water and a pinch of salt. Bring to a rolling boil over medium-high heat, cover tightly with a lid, reduce heat to the lowest setting, and simmer for 10 minutes. Turn off the heat and leave covered to steam for 5 more minutes.</li>
                         <li><strong>Steam Veg:</strong> Steam or boil 150g frozen mixed vegetables for 4–5 minutes until tender. Fluff the rice with a fork and serve alongside the crispy chicken and hot vegetables.</li>
                     </ol>
@@ -975,11 +978,14 @@
                 <div class="ingredients-box">
                     <strong>Ingredients:</strong>
                     <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d2_i1"><span>150g Pasta & 15g Flour</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d2_i2"><span>100g Bacon</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d2_i3"><span>150g Broccoli</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d2_i4"><span>100g Cheese, 15g Butter, 200ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d2_i5"><span>2 tsp Lea & Perrins</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d2_i1"><span>150g Pasta</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d2_i2"><span>15g Flour</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d2_i3"><span>100g Bacon</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d2_i4"><span>150g Broccoli</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d2_i5"><span>100g Cheese</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d2_i6"><span>15g Butter</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d2_i7"><span>200ml Milk</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d2_i8"><span>2 tsp Lea & Perrins</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
@@ -987,7 +993,7 @@
                         <li><strong>Boil Pasta & Broccoli:</strong> Bring a large pot of salted water to a boil. Add 150g pasta and cook for 5 minutes. Chop 150g broccoli into small florets, add them into the boiling pasta water for the final 3 minutes of cooking, then drain thoroughly.</li>
                         <li><strong>Fry Bacon:</strong> Dice 100g bacon and fry in a pan over medium heat for about 5 minutes until crispy and golden brown. Set aside.</li>
                         <li><strong>Make Cheese Sauce:</strong> In a saucepan, melt 15g butter over medium heat. Stir in 15g plain flour and cook for 1 minute, stirring constantly. Gradually whisk in 200ml milk a little at a time to prevent lumps, stirring until smooth and thickened. Turn off the heat and stir in 2 tsp Lea & Perrins and 70g of cheddar cheese until fully melted and smooth.</li>
-                        <li><strong>Assemble & Bake:</strong> Combine the cooked pasta, broccoli, and crispy bacon with the cheese sauce in an ovenproof or air-fryer safe dish. Scatter the remaining 30g cheddar cheese over the top. Place the dish in **Zone 1** of your air fryer and set to **Air Fry at 180°C for 6–8 minutes** until the cheese is bubbling and golden brown.</li>
+                        <li><strong>Assemble & Bake:</strong> Combine the cooked pasta, broccoli, and crispy bacon with the cheese sauce in an ovenproof or air-fryer safe dish. Scatter the remaining 30g cheddar cheese over the top. Place the dish in Zone 1 (Air Fry @ 180°C for 6–8 minutes) until the cheese is bubbling and golden brown.</li>
                     </ol>
                 </div>
             </div>
@@ -1006,16 +1012,24 @@
                     <strong>Ingredients:</strong>
                     <ul>
                         <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d3_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i2"><span>400g Potatoes, 150g Parsnips, Carrots, Broccoli, Garlic</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d3_i3"><span>2 Yorkshires, Butter, Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i4"><span>Honey, Oil, Gravy Granules</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i2"><span>400g Potatoes</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i3"><span>150g Parsnips</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i4"><span>Carrots</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i5"><span>Broccoli</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i6"><span>Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d3_i7"><span>2 Yorkshire Puddings</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d3_i8"><span>Butter</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d3_i9"><span>Milk</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i10"><span>Honey</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i11"><span>Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i12"><span>Gravy Granules</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Roast Parsnips:</strong> Toss 150g parsnip batons in 1/2 tbsp oil, 1 tbsp honey, salt, and pepper. Place them in **Zone 1 (Left Drawer)** and set to **Roast at 190°C for 6 minutes**.</li>
-                        <li><strong>Air Fry Beef Patties & Yorkshires:</strong> Shape 250g beef mince into 2 flat patties and season with salt and pepper. Place the beef patties in **Zone 2 (Right Drawer)** and set to **Roast at 190°C for 10–12 minutes** until fully cooked through. Pop 2 frozen Yorkshire puddings into Zone 2 for the final 2 minutes alongside the patties.</li>
-                        <li><strong>Make Garlic Mash:</strong> Peel and cube 400g potatoes and boil in salted water for 15 minutes until fork-tender; drain well. Mash with 2 crushed garlic cloves, 20g butter, 30ml milk, salt, and pepper until smooth and creamy.</li>
+                        <li><strong>Roast Parsnips:</strong> Toss 150g parsnip batons in 1/2 tbsp oil, 1 tbsp honey, salt, and pepper. Place them in Zone 1 (Roast @ 190°C for 6 minutes).</li>
+                        <li><strong>Air Fry Beef Patties & Yorkshires:</strong> Shape 250g beef mince into 2 flat patties and season with salt and pepper. Place the beef patties in Zone 2 (Roast @ 190°C for 10–12 minutes) until fully cooked through. Pop 2 frozen Yorkshire puddings into Zone 2 for the final 2 minutes alongside the patties.</li>
+                        <li><strong>Make Garlic Mash:</strong> Peel and cube 400g potatoes. Add to pan with garlic clove and boil in salted water for 15 minutes until fork-tender; drain well. Mash with 20g butter, 30ml milk, salt, and pepper until smooth and creamy.</li>
                         <li><strong>Boil Veg & Gravy:</strong> Boil chopped carrots and 100g broccoli for 6 minutes until tender. Mix 20g beef gravy granules with 250ml boiling water in a jug, stirring until smooth, and serve hot over the meal.</li>
                     </ol>
                 </div>
@@ -1035,13 +1049,15 @@
                     <strong>Ingredients:</strong>
                     <ul>
                         <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d4_i1"><span>300g Chicken Thighs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d4_i2"><span>150g White Rice & 15ml Soy Sauce</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d4_i3"><span>2 Eggs & 150g Frozen Mixed Veg</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d4_i2"><span>150g White Rice</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d4_i3"><span>15ml Soy Sauce</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d4_i4"><span>2 Eggs</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d4_i5"><span>150g Frozen Mixed Veg</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Cook Chicken:</strong> Dice 300g chicken thighs into small bite-sized pieces. Place them in **Zone 1** of your air fryer and set to **Air Fry at 190°C for 12 minutes** until golden brown and cooked through. Remove and set aside.</li>
+                        <li><strong>Cook Chicken:</strong> Dice 300g chicken thighs into small bite-sized pieces. Place them in Zone 1 (Air Fry @ 190°C for 12 minutes) until golden brown and cooked through. Remove and set aside.</li>
                         <li><strong>Scramble Eggs:</strong> In a skillet or pan on the hob, heat a tiny splash of oil, pour in 2 beaten eggs, and scramble quickly until just set. Break them up into small pieces with a spatula.</li>
                         <li><strong>Stir-Fry Rice & Veg:</strong> Add 150g frozen mixed vegetables and 150g cold cooked white rice straight into the pan with the eggs. Increase heat to high and stir-fry vigorously for 3–4 minutes, breaking up any clumps of rice.</li>
                         <li><strong>Combine & Finish:</strong> Toss the cooked chicken back into the skillet along with 15ml soy sauce. Toss everything together over high heat for 2 minutes until piping hot and evenly coated, then serve.</li>
@@ -1063,15 +1079,22 @@
                     <strong>Ingredients:</strong>
                     <ul>
                         <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d5_i1"><span>2 Pork Chops</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i2"><span>400g Potatoes, 150g Parsnips, Carrots, Broccoli</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d5_i3"><span>Peas, Butter, Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d5_i4"><span>Honey, Oil, Gravy Granules</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i2"><span>400g Potatoes</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i3"><span>150g Parsnips</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i4"><span>Carrots</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i5"><span>Broccoli</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d5_i6"><span>Peas</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d5_i7"><span>Butter</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d5_i8"><span>Milk</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d5_i9"><span>Honey</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d5_i10"><span>Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d5_i11"><span>Gravy Granules</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Roast Veg in Air Fryer:</strong> Peel and slice 2 carrots and 150g parsnips into batons. Toss in 1 tbsp oil, 1 tbsp honey, salt, and pepper. Place in **Zone 1 (Left Drawer)** and set to **Roast at 180°C for 6 minutes** to start softening.</li>
-                        <li><strong>Air Fry Pork Chops:</strong> Season 2 pork chops generously with salt and pepper. Place the pork chops flat into **Zone 2 (Right Drawer)** and set to **Roast at 190°C for 12–14 minutes**, turning the chops over halfway through to cook evenly. Rest chops for 3 minutes before serving.</li>
+                        <li><strong>Roast Veg in Air Fryer:</strong> Peel and slice 2 carrots and 150g parsnips into batons. Toss in 1 tbsp oil, 1 tbsp honey, salt, and pepper. Place in Zone 1 (Roast @ 180°C for 6 minutes) to start softening.</li>
+                        <li><strong>Air Fry Pork Chops:</strong> Season 2 pork chops generously with salt and pepper. Place the pork chops flat into Zone 2 (Roast @ 190°C for 12–14 minutes), turning the chops over halfway through to cook evenly. Rest chops for 3 minutes before serving.</li>
                         <li><strong>Make Mash:</strong> Peel and cube 400g potatoes, boil in salted water for 15 minutes until tender, and drain. Mash thoroughly with 20g butter, 30ml milk, salt, and pepper.</li>
                         <li><strong>Boil Greens & Gravy:</strong> Boil 100g broccoli and 100g peas for 4 minutes until vibrant and tender. Whisk 20g beef gravy granules into 250ml boiling water and serve alongside.</li>
                     </ol>
