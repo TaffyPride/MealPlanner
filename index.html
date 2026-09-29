@@ -782,11 +782,7 @@
         <div class="shopping-card" id="lunch_card">
             <div class="shopping-header" onclick="toggleCard('lunch_card')">
                 <h2 class="section-title">🥪 Lunch Staples</h2>
-                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('lunch')">Reset</button>
-                    <span class="chevron"></span>
-                </div>
-            </div>
+                            </div>
             <div class="shopping-body">
                 <ul class="staples-grid">
                     <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="lunch_milk"><span>Milk</span></label></li>
@@ -796,7 +792,12 @@
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="lunch_mayo"><span>Mayonnaise</span></label></li>
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="lunch_mustard"><span>Mustard</span></label></li>
                 </ul>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('lunch')">Reset</button>
+                    <span class="chevron"></span>
+                </div>
             </div>
+                
         </div>
 
         <div class="shopping-card" id="staples_card">
