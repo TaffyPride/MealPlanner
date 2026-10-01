@@ -753,7 +753,7 @@
         <button class="header-btn" onclick="openAirFryerCheat()">🔥 Air Fry</button>
         <button class="header-btn" onclick="openCookingCheat()">🍳 Cook</button>
         <button class="header-btn" onclick="openSauceCheat()">🍯 Sauces</button>
-        <button class="header-btn" onclick="openOvenCheat()">🌡️️ Oven</button>
+        <button class="header-btn" onclick="openOvenCheat()">🌡 Oven</button>
         <button class="header-btn" onclick="toggleTheme()" id="theme_btn">🌙 Night</button>
     </div>
 </header>
@@ -1679,7 +1679,7 @@
                     <button class="reset-week-btn" onclick="resetSingleWeek('week4')">Reset Week 4</button>
                 </div>
                 <div class="shopping-grid">
-                                        <div class="category-card">
+                    <div class="category-card">
                         <h3>Meat & Poultry</h3>
                         <ul id="w4_summary_meat"></ul>
                     </div>
@@ -2242,7 +2242,7 @@
     </button>
 </nav>
 
-<!-- Sripts -->
+<!-- Scripts -->
     
 <script>
     if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
@@ -2530,7 +2530,7 @@
     function toggleSelectAll(weekId) {
         triggerHaptic();
         const weekTab = document.getElementById(weekId);
-        const checkboxes = weekTab.querySelectorAll('.ing-check');
+        const checkboxes = weekTab.querySelectorAll('.meal-card .ing-check');
         const allChecked = Array.from(checkboxes).every(cb => cb.checked);
         checkboxes.forEach(cb => {
             cb.checked = !allChecked;
@@ -2562,7 +2562,104 @@
         renderShoppingTab();
     }
 
+    function renderWeeklySummaries() {
+        const weeks = ['week1', 'week2', 'week3', 'week4'];
+        
+        weeks.forEach((weekId, index) => {
+            const weekNum = index + 1;
+            const weekTab = document.getElementById(weekId);
+            if (!weekTab) return;
+
+            const categories = {
+                meat: document.getElementById(`w${weekNum}_summary_meat`),
+                produce: document.getElementById(`w${weekNum}_summary_produce`),
+                chilled: document.getElementById(`w${weekNum}_summary_chilled`),
+                pantry: document.getElementById(`w${weekNum}_summary_pantry`)
+            };
+
+            Object.values(categories).forEach(ul => { if (ul) ul.innerHTML = ''; });
+
+            const dailyCheckboxes = weekTab.querySelectorAll('.meal-card .ing-check');
+            const summaryMap = {};
+
+            dailyCheckboxes.forEach(cb => {
+                const cat = cb.getAttribute('data-cat') || 'pantry';
+                const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
+                const { baseName, grams } = parseIngredientDetails(rawText);
+                const key = cat + '_' + baseName.toLowerCase();
+
+                if (!summaryMap[key]) {
+                    summaryMap[key] = { baseName, cat, totalGrams: grams, count: 1, rawText };
+                } else {
+                    summaryMap[key].totalGrams += grams;
+                    summaryMap[key].count += 1;
+                }
+            });
+
+            Object.values(summaryMap).forEach(item => {
+                if (!categories[item.cat]) return;
+
+                let weightDisplay = '';
+                if (item.totalGrams > 0) {
+                    weightDisplay = item.totalGrams >= 1000 
+                        ? (item.totalGrams / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
+                        : item.totalGrams + 'g ';
+                } else if (item.count > 1) {
+                    weightDisplay = `x${item.count} `;
+                }
+
+                const autoCheckId = `w${weekNum}_auto_summary_${item.cat}_${item.baseName.replace(/\s+/g, '_').toLowerCase()}`;
+                
+                // Check if all daily instances of this ingredient in the week are checked
+                const matchingDailyChecks = Array.from(dailyCheckboxes).filter(cb => {
+                    const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
+                    return parseIngredientDetails(rawText).baseName.toLowerCase() === item.baseName.toLowerCase() &&
+                           (cb.getAttribute('data-cat') || 'pantry') === item.cat;
+                });
+                const allChecked = matchingDailyChecks.length > 0 && matchingDailyChecks.every(cb => cb.checked);
+
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <label>
+                        <input type="checkbox" class="summary-auto-check" data-cat="${item.cat}" id="${autoCheckId}" ${allChecked ? 'checked' : ''} onchange="toggleWeeklyGroup('${weekId}', '${item.cat}', '${item.baseName.replace(/'/g, "\\'")}', this.checked)">
+                        <span>${weightDisplay}${item.baseName}</span>
+                    </label>
+                `;
+                categories[item.cat].appendChild(li);
+            });
+
+            Object.keys(categories).forEach(cat => {
+                if (categories[cat]) {
+                    const card = categories[cat].closest('.category-card');
+                    if (card) card.style.display = categories[cat].children.length === 0 ? 'none' : 'block';
+                }
+            });
+        });
+    }
+
+    function toggleWeeklyGroup(weekId, cat, baseName, isChecked) {
+        triggerHaptic();
+        const weekTab = document.getElementById(weekId);
+        if (!weekTab) return;
+
+        const dailyCheckboxes = weekTab.querySelectorAll('.meal-card .ing-check');
+        dailyCheckboxes.forEach(cb => {
+            const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
+            const details = parseIngredientDetails(rawText);
+            const cbCat = cb.getAttribute('data-cat') || 'pantry';
+
+            if (details.baseName.toLowerCase() === baseName.toLowerCase() && cbCat === cat) {
+                cb.checked = isChecked;
+                localStorage.setItem(cb.id, isChecked);
+            }
+        });
+
+        renderShoppingTab();
+    }
+
     function renderShoppingTab() {
+        renderWeeklySummaries();
+
         const categories = {
             meat: { ul: document.getElementById('shop_cat_meat'), title: 'Meat & Poultry' },
             produce: { ul: document.getElementById('shop_cat_produce'), title: 'Produce' },
@@ -2583,25 +2680,19 @@
 
         const itemMap = {};
         checkedIngredients.forEach(cb => {
+            if (cb.id && cb.id.includes('_auto_summary_')) return;
+
             const cat = cb.getAttribute('data-cat') || 'pantry';
             const rawLabelText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
             const { baseName, grams } = parseIngredientDetails(rawLabelText);
             const tags = getWeekDayTag(cb);
             const key = cat + '_' + baseName.toLowerCase();
-            const isTopOverview = cb.id && !cb.id.includes('_d') && !cb.id.includes('_i');
 
             if (!itemMap[key]) {
-                itemMap[key] = { baseName: baseName, cat: cat, totalGrams: grams, hasTopCheck: isTopOverview, ids: [cb.id], tags: [...tags], isCustom: false };
+                itemMap[key] = { baseName: baseName, cat: cat, totalGrams: grams, ids: [cb.id], tags: [...tags], isCustom: false };
             } else {
                 itemMap[key].ids.push(cb.id);
-                if (!itemMap[key].hasTopCheck) {
-                    if (isTopOverview) {
-                        itemMap[key].totalGrams = grams;
-                        itemMap[key].hasTopCheck = true;
-                    } else {
-                        itemMap[key].totalGrams += grams;
-                    }
-                }
+                itemMap[key].totalGrams += grams;
                 tags.forEach(t => { if (!itemMap[key].tags.includes(t)) itemMap[key].tags.push(t); });
             }
         });
@@ -2623,7 +2714,9 @@
 
             let weightPrefix = '';
             if (item.totalGrams > 0) {
-                weightPrefix = item.totalGrams >= 1000 ? (item.totalGrams / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' : item.totalGrams + 'g ';
+                weightPrefix = item.totalGrams >= 1000 
+                    ? (item.totalGrams / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
+                    : item.totalGrams + 'g ';
             }
 
             let deleteBtn = item.isCustom ? `<button class="delete-item-btn" onclick="removeExtraItem('${item.ids.find(id => id.startsWith('extra_'))}')" title="Delete Extra">&times;</button>` : '';
