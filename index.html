@@ -746,8 +746,6 @@
 </head>
 <body>
 
-<!-- Top Modal Buttons -->
-    
 <header>
     <div class="header-actions">
         <button class="header-btn" onclick="openAirFryerCheat()">🔥 Air Fry</button>
@@ -868,8 +866,7 @@
         </div>
     </div>
 
-<!-- WEEK 1 -->
-    
+    <!-- WEEK 1 -->
     <div id="week1" class="tab-content">
         <div class="tab-header-row">
             <h2 class="section-title">📅 Week 1</h2>
@@ -1146,8 +1143,7 @@
         </div>
     </div>
 
-<!-- WEEK 2 -->
-    
+    <!-- WEEK 2 -->
     <div id="week2" class="tab-content">
         <div class="tab-header-row">
             <h2 class="section-title">📅 Week 2</h2>
@@ -1414,8 +1410,7 @@
         </div>
     </div>
 
-<!-- WEEK 3 -->
-    
+    <!-- WEEK 3 -->
     <div id="week3" class="tab-content">
         <div class="tab-header-row">
             <h2 class="section-title">📅 Week 3</h2>
@@ -1660,8 +1655,7 @@
         </div>
     </div>
 
-<!-- WEEK 4 -->
-    
+    <!-- WEEK 4 -->
     <div id="week4" class="tab-content">
         <div class="tab-header-row">
             <h2 class="section-title">📅 Week 4</h2>
@@ -1915,7 +1909,6 @@
 </div>
 
 <!-- Air Fryer Cheat Sheet Modal Overlay -->
-    
 <div class="modal-overlay" id="air_fryer_modal" onclick="closeAirFryerCheat(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">
@@ -1923,7 +1916,6 @@
             <button class="modal-close" onclick="closeAirFryerCheat()">&times;</button>
         </div>
         <div class="modal-body">
-
             <div class="calc-box">
                 <div class="cheat-item-header" style="margin-bottom:0.15rem;">
                     <span class="cheat-title">⚡ Oven to Air Fryer Converter</span>
@@ -2030,7 +2022,6 @@
 </div>
 
 <!-- General Cooking Cheat Sheet Modal Overlay -->
-    
 <div class="modal-overlay" id="cooking_modal" onclick="closeCookingCheat(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">
@@ -2038,7 +2029,6 @@
             <button class="modal-close" onclick="closeCookingCheat()">&times;</button>
         </div>
         <div class="modal-body">
-            
             <div class="calc-box">
                 <div class="cheat-item-header" style="margin-bottom:0.15rem;">
                     <span class="cheat-title">🍚 Rice to Water Calculator</span>
@@ -2131,7 +2121,6 @@
 </div>
 
 <!-- Sauces & Glazes Cheat Sheet Modal Overlay -->
-    
 <div class="modal-overlay" id="sauce_modal" onclick="closeSauceCheat(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">
@@ -2198,7 +2187,6 @@
 </div>
 
 <!-- Oven & Temperature Cheat Sheet Modal Overlay -->
-    
 <div class="modal-overlay" id="oven_modal" onclick="closeOvenCheat(event)">
     <div class="modal-card" onclick="event.stopPropagation()">
         <div class="modal-header">
@@ -2243,7 +2231,6 @@
 </nav>
 
 <!-- Scripts -->
-    
 <script>
     if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
         window.addEventListener('load', () => {
@@ -2467,19 +2454,47 @@
 
     function parseIngredientDetails(rawText) {
         let text = rawText.replace(/\(.*?\)/g, '').trim();
-        const weightMatch = text.match(/^([\d\.]+)\s*(g|kg|ml)\b/i);
-        let grams = 0;
-        if (weightMatch) {
-            let num = parseFloat(weightMatch[1]);
-            let unit = weightMatch[2].toLowerCase();
-            grams = (unit === 'kg') ? num * 1000 : num;
+        const match = text.match(/^([\d\.\/]+)\s*(g|kg|ml|l|tbsp|tsp)\b/i);
+        let amount = 0;
+        let unit = 'g';
+
+        if (match) {
+            let numStr = match[1];
+            let rawUnit = match[2].toLowerCase();
+            let num = 0;
+
+            if (numStr.includes('/')) {
+                let parts = numStr.split('/');
+                num = parseFloat(parts[0]) / parseFloat(parts[1]);
+            } else {
+                num = parseFloat(numStr);
+            }
+
+            if (rawUnit === 'kg') {
+                amount = num * 1000;
+                unit = 'g';
+            } else if (rawUnit === 'l') {
+                amount = num * 1000;
+                unit = 'ml';
+            } else if (rawUnit === 'tbsp') {
+                amount = num * 15;
+                unit = 'ml';
+            } else if (rawUnit === 'tsp') {
+                amount = num * 5;
+                unit = 'ml';
+            } else {
+                amount = num;
+                unit = rawUnit;
+            }
         }
+
         let baseName = text
             .replace(/^[\d\.\/]+(?:\s*[\-\–]\s*[\d\.\/]+)?\s*(?:g|kg|ml|l|tbsp|tsp|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves)?\b/i, '')
             .replace(/\b(diced|sliced|cubed|shredded|batons|wedges|thin|grated|cooked and cooled|cooked|beaten)\b/i, '')
             .trim();
         baseName = baseName.replace(/\b\w/g, c => c.toUpperCase()) || rawText;
-        return { baseName, grams };
+        
+        return { baseName, amount, unit };
     }
 
     function getWeekDayTag(element) {
@@ -2585,13 +2600,13 @@
             dailyCheckboxes.forEach(cb => {
                 const cat = cb.getAttribute('data-cat') || 'pantry';
                 const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
-                const { baseName, grams } = parseIngredientDetails(rawText);
+                const { baseName, amount, unit } = parseIngredientDetails(rawText);
                 const key = cat + '_' + baseName.toLowerCase();
 
                 if (!summaryMap[key]) {
-                    summaryMap[key] = { baseName, cat, totalGrams: grams, count: 1, rawText };
+                    summaryMap[key] = { baseName, cat, totalAmount: amount, unit, count: 1, rawText };
                 } else {
-                    summaryMap[key].totalGrams += grams;
+                    summaryMap[key].totalAmount += amount;
                     summaryMap[key].count += 1;
                 }
             });
@@ -2600,17 +2615,22 @@
                 if (!categories[item.cat]) return;
 
                 let weightDisplay = '';
-                if (item.totalGrams > 0) {
-                    weightDisplay = item.totalGrams >= 1000 
-                        ? (item.totalGrams / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
-                        : item.totalGrams + 'g ';
+                if (item.totalAmount > 0) {
+                    if (item.unit === 'ml') {
+                        weightDisplay = item.totalAmount >= 1000 
+                            ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
+                            : item.totalAmount + 'ml ';
+                    } else {
+                        weightDisplay = item.totalAmount >= 1000 
+                            ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
+                            : item.totalAmount + 'g ';
+                    }
                 } else if (item.count > 1) {
                     weightDisplay = `x${item.count} `;
                 }
 
                 const autoCheckId = `w${weekNum}_auto_summary_${item.cat}_${item.baseName.replace(/\s+/g, '_').toLowerCase()}`;
                 
-                // Check if all daily instances of this ingredient in the week are checked
                 const matchingDailyChecks = Array.from(dailyCheckboxes).filter(cb => {
                     const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
                     return parseIngredientDetails(rawText).baseName.toLowerCase() === item.baseName.toLowerCase() &&
@@ -2684,15 +2704,15 @@
 
             const cat = cb.getAttribute('data-cat') || 'pantry';
             const rawLabelText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
-            const { baseName, grams } = parseIngredientDetails(rawLabelText);
+            const { baseName, amount, unit } = parseIngredientDetails(rawLabelText);
             const tags = getWeekDayTag(cb);
             const key = cat + '_' + baseName.toLowerCase();
 
             if (!itemMap[key]) {
-                itemMap[key] = { baseName: baseName, cat: cat, totalGrams: grams, ids: [cb.id], tags: [...tags], isCustom: false };
+                itemMap[key] = { baseName: baseName, cat: cat, totalAmount: amount, unit: unit, ids: [cb.id], tags: [...tags], isCustom: false };
             } else {
                 itemMap[key].ids.push(cb.id);
-                itemMap[key].totalGrams += grams;
+                itemMap[key].totalAmount += amount;
                 tags.forEach(t => { if (!itemMap[key].tags.includes(t)) itemMap[key].tags.push(t); });
             }
         });
@@ -2700,7 +2720,7 @@
         customExtras.forEach(item => {
             const key = item.cat + '_' + item.text.toLowerCase();
             if (!itemMap[key]) {
-                itemMap[key] = { baseName: item.text, cat: item.cat, totalGrams: 0, ids: [item.id], tags: [], isCustom: true };
+                itemMap[key] = { baseName: item.text, cat: item.cat, totalAmount: 0, unit: 'g', ids: [item.id], tags: [], isCustom: true };
             } else {
                 itemMap[key].isCustom = true;
                 itemMap[key].ids.push(item.id);
@@ -2713,10 +2733,16 @@
             const isChecked = localStorage.getItem(shopItemId) === 'true';
 
             let weightPrefix = '';
-            if (item.totalGrams > 0) {
-                weightPrefix = item.totalGrams >= 1000 
-                    ? (item.totalGrams / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
-                    : item.totalGrams + 'g ';
+            if (item.totalAmount > 0) {
+                if (item.unit === 'ml') {
+                    weightPrefix = item.totalAmount >= 1000 
+                        ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
+                        : item.totalAmount + 'ml ';
+                } else {
+                    weightPrefix = item.totalAmount >= 1000 
+                        ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
+                        : item.totalAmount + 'g ';
+                }
             }
 
             let deleteBtn = item.isCustom ? `<button class="delete-item-btn" onclick="removeExtraItem('${item.ids.find(id => id.startsWith('extra_'))}')" title="Delete Extra">&times;</button>` : '';
