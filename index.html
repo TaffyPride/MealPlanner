@@ -483,7 +483,7 @@
             border-radius: 8px;
             padding: 0.65rem;
             display: flex;
-            justify-content: space-around;
+            justify-style: space-around;
             align-items: center;
             text-align: center;
             margin-top: 0.25rem;
@@ -2454,13 +2454,14 @@
 
     function parseIngredientDetails(rawText) {
         let text = rawText.replace(/\(.*?\)/g, '').trim();
-        const match = text.match(/^([\d\.\/]+)\s*(g|kg|ml|l|tbsp|tsp)\b/i);
+        // Match explicit unit measurements like 150g, 200ml, 1 tbsp, 2 tsp
+        const matchUnit = text.match(/^([\d\.\/]+)\s*(g|kg|ml|l|tbsp|tsp)\b/i);
         let amount = 0;
         let unit = 'g';
 
-        if (match) {
-            let numStr = match[1];
-            let rawUnit = match[2].toLowerCase();
+        if (matchUnit) {
+            let numStr = matchUnit[1];
+            let rawUnit = matchUnit[2].toLowerCase();
             let num = 0;
 
             if (numStr.includes('/')) {
@@ -2486,10 +2487,23 @@
                 amount = num;
                 unit = rawUnit;
             }
+        } else {
+            // Match plain numbers without explicit g/ml units (e.g. "2 Eggs", "1 Onion", "2 Pork Chops")
+            const matchCount = text.match(/^([\d\.\/]+)\b/);
+            if (matchCount) {
+                let numStr = matchCount[1];
+                if (numStr.includes('/')) {
+                    let parts = numStr.split('/');
+                    amount = parseFloat(parts[0]) / parseFloat(parts[1]);
+                } else {
+                    amount = parseFloat(numStr);
+                }
+                unit = 'count';
+            }
         }
 
         let baseName = text
-            .replace(/^[\d\.\/]+(?:\s*[\-\–]\s*[\d\.\/]+)?\s*(?:g|kg|ml|l|tbsp|tsp|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves)?\b/i, '')
+            .replace(/^[\d\.\/]+(?:\s*[\-\–]\s*[\d\.\/]+)?\s*(?:g|kg|ml|l|tbsp|tsp|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves|clove)?\b/i, '')
             .replace(/\b(diced|sliced|cubed|shredded|batons|wedges|thin|grated|cooked and cooled|cooked|beaten)\b/i, '')
             .trim();
         baseName = baseName.replace(/\b\w/g, c => c.toUpperCase()) || rawText;
@@ -2620,6 +2634,8 @@
                         weightDisplay = item.totalAmount >= 1000 
                             ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
                             : item.totalAmount + 'ml ';
+                    } else if (item.unit === 'count') {
+                        weightDisplay = item.totalAmount + ' ';
                     } else {
                         weightDisplay = item.totalAmount >= 1000 
                             ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
@@ -2738,6 +2754,8 @@
                     weightPrefix = item.totalAmount >= 1000 
                         ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
                         : item.totalAmount + 'ml ';
+                } else if (item.unit === 'count') {
+                    weightPrefix = item.totalAmount + ' ';
                 } else {
                     weightPrefix = item.totalAmount >= 1000 
                         ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
