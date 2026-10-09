@@ -142,7 +142,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 33.33%;
+            width: 25%;
             height: 50px;
             transition: all 0.2s ease;
             white-space: nowrap;
@@ -862,7 +862,7 @@
             </div>
         </div>
         <div id="shopping_empty" class="empty-state">
-            No items selected. Select ingredients from Quick, staple items, or add custom items above!
+            No items selected. Select ingredients from Quick, Comfort, Holiday, staple items, or add custom items above!
         </div>
     </div>
 
@@ -1340,6 +1340,240 @@
         </div>
 
     </div>
+
+    <!-- HOLIDAY MEALS -->
+	
+    <div id="holiday" class="tab-content">
+        <div class="tab-header-row">
+            <h2 class="section-title">🏕️ Holiday Meals</h2>
+            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset</button>
+        </div>
+
+        <div class="shopping-card" id="shop_holiday">
+            <div class="shopping-header" onclick="toggleCard('shop_holiday')">
+                <h2 class="section-title">🛒 Ingredients</h2>
+                <span class="chevron"></span>
+            </div>
+            <div class="shopping-body">
+                <div class="week-actions-bar">
+                    <button class="select-all-btn" onclick="toggleSelectAll('holiday')">Select All</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('holiday')">Reset</button>
+                </div>
+                <div class="shopping-grid">
+                    <div class="category-card">
+                        <h3>Meat & Poultry</h3>
+                        <ul id="holiday_summary_meat"></ul>
+                    </div>
+                    <div class="category-card">
+                        <h3>Produce</h3>
+                        <ul id="holiday_summary_produce"></ul>
+                    </div>
+                    <div class="category-card">
+                        <h3>Chilled, Dairy & Frozen</h3>
+                        <ul id="holiday_summary_chilled"></ul>
+                    </div>
+                    <div class="category-card">
+                        <h3>Pantry</h3>
+                        <ul id="holiday_summary_pantry"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-bottom:0.75rem;">Meal Instructions</h2>
+
+        <!-- Holiday Meal 1: Cream-Free Chicken & Mushroom Pasta -->
+		
+        <div class="meal-card" id="card_holiday_d1">
+            <div class="meal-header">
+                <input type="checkbox" id="holiday_d1_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_holiday_d1')">
+                    <h3 class="meal-title">1. Cream-Free Chicken & Mushroom Pasta</h3>
+                    <span class="chevron"></span>
+                </div>
+            </div>
+            <div class="meal-body">
+                <div class="ingredients-box">
+                    <strong>Ingredients:</strong>
+                    <ul>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="holiday_d1_i1"><span>400g Chicken Thighs</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d1_i2"><span>200g Mushrooms</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d1_i3"><span>1 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d1_i4"><span>1 clove Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d1_i5"><span>200g Dried Pasta</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d1_i6"><span>1 Tinned Chopped Tomatoes</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d1_i7"><span>30g Tomato Puree</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d1_i8"><span>15ml Vegetable Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d1_i9"><span>Dried Herbs</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d1_i10"><span>Salt & Pepper</span></label></li>
+                    </ul>
+                </div>
+                <div class="instructions-list">
+                    <ol>
+                        <li>Boil dried pasta in a separate saucepan of salted water until al dente, then drain.</li>
+                        <li>In your frying pan, fry diced chicken in olive oil until golden, then remove.</li>
+                        <li>Sauté mushrooms and onions in the same pan until soft.</li>
+                        <li>Add garlic, tinned tomatoes, tomato puree, herbs, and simmer for 8–10 mins.</li>
+                        <li>Stir the chicken and cooked pasta directly into the sauce until piping hot.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Holiday Meal 2: Chicken, Veg & Potato Stew / Hotpot -->
+		
+        <div class="meal-card" id="card_holiday_d2">
+            <div class="meal-header">
+                <input type="checkbox" id="holiday_d2_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_holiday_d2')">
+                    <h3 class="meal-title">2. Chicken, Veg & Potato Stew / Hotpot</h3>
+                    <span class="chevron"></span>
+                </div>
+            </div>
+            <div class="meal-body">
+                <div class="ingredients-box">
+                    <strong>Ingredients:</strong>
+                    <ul>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="holiday_d2_i1"><span>400g Chicken Thighs</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d2_i2"><span>400g Potatoes</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d2_i3"><span>2 Carrot</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d2_i4"><span>1 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d2_i5"><span>1 Chicken Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d2_i6"><span>15ml Vegetable Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d2_i7"><span>20g Plain Flour</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d2_i8"><span>15ml Lea & Perrins</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d2_i9"><span>Dried Herbs</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d2_i10"><span>Salt & Pepper</span></label></li>
+                    </ul>
+                </div>
+                <div class="instructions-list">
+                    <ol>
+                        <li>Brown diced chicken chunks in a large saucepan, then remove and set aside.</li>
+                        <li>Sauté chopped onions and carrots in the same pan.</li>
+                        <li>Dust with plain flour and stir well for 1 minute.</li>
+                        <li>Gradually add made chicken stock, raw potato chunks, chicken, and seasonings.</li>
+                        <li>Cover and simmer on low for 20–25 mins until potatoes are tender and gravy thickens.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Holiday Meal 3: Honey BBQ Sausage & Onion Skillet -->
+		
+        <div class="meal-card" id="card_holiday_d3">
+            <div class="meal-header">
+                <input type="checkbox" id="holiday_d3_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_holiday_d3')">
+                    <h3 class="meal-title">3. Honey BBQ Sausage & Onion Skillet</h3>
+                    <span class="chevron"></span>
+                </div>
+            </div>
+            <div class="meal-body">
+                <div class="ingredients-box">
+                    <strong>Ingredients:</strong>
+                    <ul>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="holiday_d3_i1"><span>400g Sausages</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d3_i2"><span>1 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d3_i3"><span>1 Bell Pepper</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d3_i4"><span>120ml HP Honey BBQ sauce</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d3_i5"><span>15ml Tomato Puree</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d3_i6"><span>1 Beef Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d3_i7"><span>180g Rice</span></label></li>
+                    </ul>
+                </div>
+                <div class="instructions-list">
+                    <ol>
+                        <li>Slice sausages into rounds and brown them in your pan, then remove.</li>
+                        <li>Sauté sliced onions and peppers in the remaining pan juices until soft.</li>
+                        <li>Stir in a generous splash of BBQ sauce, tomato puree, and 200ml stock.</li>
+                        <li>Return the sausages to the pan and simmer until the sauce is glossy and thick.</li>
+                        <li>Boil fresh rice on the side, then serve hot together.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Holiday Meal 4: Hearty Beef Bolognese & Pasta -->
+		
+        <div class="meal-card" id="card_holiday_d4">
+            <div class="meal-header">
+                <input type="checkbox" id="holiday_d4_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_holiday_d4')">
+                    <h3 class="meal-title">4. Hearty Beef Bolognese & Pasta</h3>
+                    <span class="chevron"></span>
+                </div>
+            </div>
+            <div class="meal-body">
+                <div class="ingredients-box">
+                    <strong>Ingredients:</strong>
+                    <ul>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="holiday_d4_i1"><span>400g 5% fat Beef Mince</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d4_i2"><span>200g Dried Pasta</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d4_i3"><span>1 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d4_i4"><span>1 Carrot</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d4_i5"><span>1 clove Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d4_i6"><span>1 Tinned Chopped Tomatoes</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d4_i7"><span>30g Tomato Puree</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d4_i8"><span>15ml Lea & Perrins</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d4_i9"><span>15ml Vegetable Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d4_i10"><span>Dried Herbs</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d4_i11"><span>Salt & Pepper</span></label></li>
+                    </ul>
+                </div>
+                <div class="instructions-list">
+                    <ol>
+                        <li>Boil dried pasta in a separate saucepan of salted water until tender, then drain.</li>
+                        <li>Brown the beef mince with diced onion, grated carrot, and garlic in your main pan.</li>
+                        <li>Stir in tinned tomatoes, tomato puree, Worcestershire sauce, and Italian herbs.</li>
+                        <li>Simmer the ragù uncovered on low for 15–20 mins until rich and thick.</li>
+                        <li>Toss the drained pasta straight into the rich beef sauce to serve.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Holiday Meal 5: Rich Beef & Veg Pot with Mash -->
+		
+        <div class="meal-card" id="card_holiday_d5">
+            <div class="meal-header">
+                <input type="checkbox" id="holiday_d5_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_holiday_d5')">
+                    <h3 class="meal-title">5. Rich Beef & Veg Pot with Mash</h3>
+                    <span class="chevron"></span>
+                </div>
+            </div>
+            <div class="meal-body">
+                <div class="ingredients-box">
+                    <strong>Ingredients:</strong>
+                    <ul>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="holiday_d5_i1"><span>400g 5% fat Beef Mince</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d5_i2"><span>1 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d5_i3"><span>1 Carrot</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d5_i4"><span>1 clove Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d5_i5"><span>1 Tinned Chopped Tomatoes</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d5_i6"><span>1 Beef Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d5_i7"><span>15ml Lea & Perrins</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d5_i8"><span>15ml Tomato Puree</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d5_i9"><span>15ml Vegetable Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d5_i10"><span>Dried Herbs</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="holiday_d5_i11"><span>Salt & Pepper</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="holiday_d5_i12"><span>700g Potato</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="holiday_d5_i13"><span>30ml Milk</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="holiday_d5_i14"><span>20g Butter/spread</span></label></li>
+                    </ul>
+                </div>
+                <div class="instructions-list">
+                    <ol>
+                        <li>Peel and chop potatoes, then boil in a saucepan of salted water until tender; drain and mash with a splash of milk or butter/spread.</li>
+                        <li>Meanwhile, brown beef mince with diced onion, grated carrots, and garlic in your main pan.</li>
+                        <li>Stir in tinned tomatoes, beef stock, Worcestershire sauce, tomato puree, and herbs; simmer 20 mins until thick.</li>
+                        <li>Spoon the rich beef mixture into bowls and top generously with your fresh homemade mash.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <!-- Air Fryer Cheat Sheet Modal Overlay -->
@@ -1656,6 +1890,9 @@
     <button class="tab-btn" onclick="openTab('week2', this)">
         <span>Comfort</span>
     </button>
+    <button class="tab-btn" onclick="openTab('holiday', this)">
+        <span>Holiday</span>
+    </button>
 </nav>
 
 <!-- Scripts -->
@@ -1929,12 +2166,18 @@
         }
 
         let baseName = text
-            .replace(/^[\d\.\/]+(?:\s*[\-\–]\s*[\d\.\/]+)?\s*(?:g|kg|ml|l|tbsp|tsp|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves|clove)?\b/i, '')
+            .replace(/^([\d\.\/]+)\s*(?:g|kg|ml|l|tbsp|tsp|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves|clove)?\b/i, '')
             .replace(/\b(diced|sliced|cubed|shredded|batons|wedges|thin|grated|cooked and cooled|cooked|beaten)\b/i, '')
             .trim();
         baseName = baseName.replace(/\b\w/g, c => c.toUpperCase()) || rawText;
         
         return { baseName, amount, unit };
+    }
+
+    function isNonQuantifiable(baseName) {
+        const lowerName = baseName.toLowerCase();
+        const keywords = ['pepper', 'salt', 'herb', 'thyme', 'rosemary'];
+        return keywords.some(kw => lowerName.includes(kw));
     }
 
     function getWeekDayTag(element) {
@@ -1997,7 +2240,8 @@
 
     function resetSingleWeek(weekId) {
         triggerHaptic();
-        const menuName = weekId === 'week2' ? 'Comfort' : 'Quick';
+        const menuNames = { week1: 'Quick', week2: 'Comfort', holiday: 'Holiday' };
+        const menuName = menuNames[weekId] || 'Menu';
         if (confirm(`Reset all checkboxes for ${menuName}?`)) {
             const weekTab = document.getElementById(weekId);
             const checkboxes = weekTab.querySelectorAll('.ing-check');
@@ -2020,13 +2264,14 @@
     }
 
     function renderWeeklySummaries() {
-        const weeks = ['week1', 'week2'];
+        const weeks = ['week1', 'week2', 'holiday'];
         
         weeks.forEach((weekId) => {
             const weekTab = document.getElementById(weekId);
             if (!weekTab) return;
 
-            const prefix = weekId === 'week1' ? 'w1' : 'w2';
+            const prefixes = { week1: 'w1', week2: 'w2', holiday: 'holiday' };
+            const prefix = prefixes[weekId];
             const categories = {
                 meat: document.getElementById(`${prefix}_summary_meat`),
                 produce: document.getElementById(`${prefix}_summary_produce`),
@@ -2044,13 +2289,12 @@
                 const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
                 const { baseName, amount, unit } = parseIngredientDetails(rawText);
                 
-                const lowerName = baseName.toLowerCase();
                 let effectiveAmount = amount;
-                if (lowerName === 'pepper' || lowerName === 'salt' || lowerName === 'black pepper') {
+                if (isNonQuantifiable(baseName)) {
                     effectiveAmount = 0;
                 }
 
-                const key = cat + '_' + lowerName;
+                const key = cat + '_' + baseName.toLowerCase();
 
                 if (!summaryMap[key]) {
                     summaryMap[key] = { baseName, cat, totalAmount: effectiveAmount, unit, count: 1, rawText };
@@ -2063,10 +2307,9 @@
             Object.values(summaryMap).forEach(item => {
                 if (!categories[item.cat]) return;
 
-                const lowerName = item.baseName.toLowerCase();
                 let weightDisplay = '';
                 
-                if (lowerName !== 'pepper' && lowerName !== 'salt' && lowerName !== 'black pepper') {
+                if (!isNonQuantifiable(item.baseName)) {
                     if (item.totalAmount > 0) {
                         if (item.unit === 'ml') {
                             weightDisplay = item.totalAmount >= 1000 
@@ -2161,11 +2404,10 @@
             const rawLabelText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
             const { baseName, amount, unit } = parseIngredientDetails(rawLabelText);
             const tags = getWeekDayTag(cb);
-            const lowerName = baseName.toLowerCase();
-            const key = cat + '_' + lowerName;
+            const key = cat + '_' + baseName.toLowerCase();
 
             let effectiveAmount = amount;
-            if (lowerName === 'pepper' || lowerName === 'salt' || lowerName === 'black pepper') {
+            if (isNonQuantifiable(baseName)) {
                 effectiveAmount = 0;
             }
 
@@ -2193,9 +2435,8 @@
             const li = document.createElement('li');
             const isChecked = localStorage.getItem(shopItemId) === 'true';
 
-            const lowerName = item.baseName.toLowerCase();
             let weightPrefix = '';
-            if (lowerName !== 'pepper' && lowerName !== 'salt' && lowerName !== 'black pepper') {
+            if (!isNonQuantifiable(item.baseName)) {
                 if (item.totalAmount > 0) {
                     if (item.unit === 'ml') {
                         weightPrefix = item.totalAmount >= 1000 
@@ -2251,14 +2492,14 @@
         let itemCount = 0;
 
         categories.forEach(cat => {
-            const ul = document.getElementById(cat.id);
-            const items = ul.querySelectorAll('li span');
+            let ul = document.getElementById(cat.id);
+            let items = ul.querySelectorAll('li span');
             if (items.length > 0) {
                 hasItems = true;
                 textList += `\n--- ${cat.title} ---\n`;
                 items.forEach(span => {
                     itemCount++;
-                    const isDone = span.previousElementSibling.checked;
+                    let isDone = span.previousElementSibling.checked;
                     textList += `${isDone ? '[X]' : '[ ]'} ${span.textContent}\n`;
                 });
             }
@@ -2299,7 +2540,7 @@
         });
 
         document.querySelectorAll('.meal-card, .shopping-card').forEach(card => {
-            const savedState = localStorage.getItem('collapse_' + card.id);
+            let savedState = localStorage.getItem('collapse_' + card.id);
             if (savedState === 'true') card.classList.add('open');
             else card.classList.remove('open');
         });
