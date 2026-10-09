@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Meal Planner">
-    <title>4-Week Meal Planner</title>
+    <title>Meal Planner</title>
 
     <link rel="manifest" href="manifest.json">
 
@@ -133,7 +133,7 @@
             background: none;
             border: none;
             color: #94a3b8;
-            font-size: 0.72rem;
+            font-size: 0.85rem;
             font-weight: 600;
             padding: 0.4rem 0.1rem;
             border-radius: 10px;
@@ -142,7 +142,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 20%;
+            width: 33.33%;
             height: 50px;
             transition: all 0.2s ease;
             white-space: nowrap;
@@ -759,8 +759,8 @@
 <div class="container">
     <div id="shopping" class="tab-content active">
         <div class="tab-header-row">
-            <h2 class="section-title">🛒 Active Shopping List</h2>
-            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset All</button>
+            <h2 class="section-title">🛒 Shopping List</h2>
+            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset</button>
         </div>
         
         <div class="add-extra-card">
@@ -862,26 +862,27 @@
             </div>
         </div>
         <div id="shopping_empty" class="empty-state">
-            No items selected. Select ingredients from Week 1-4, staple items, or add custom items above!
+            No items selected. Select ingredients from Quick, staple items, or add custom items above!
         </div>
     </div>
 
-    <!-- WEEK 1 -->
+    <!-- QUICK MEALS -->
+	
     <div id="week1" class="tab-content">
         <div class="tab-header-row">
-            <h2 class="section-title">📅 Week 1</h2>
-            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset All</button>
+            <h2 class="section-title">⚡ Quick Meals</h2>
+            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset</button>
         </div>
 
         <div class="shopping-card" id="shop_w1">
             <div class="shopping-header" onclick="toggleCard('shop_w1')">
-                <h2 class="section-title">🛒 Week 1 Ingredients List</h2>
+                <h2 class="section-title">🛒 Ingredients</h2>
                 <span class="chevron"></span>
             </div>
             <div class="shopping-body">
                 <div class="week-actions-bar">
-                    <button class="select-all-btn" onclick="toggleSelectAll('week1')">Select All Week 1</button>
-                    <button class="reset-week-btn" onclick="resetSingleWeek('week1')">Reset Week 1</button>
+                    <button class="select-all-btn" onclick="toggleSelectAll('week1')">Select All</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('week1')">Reset</button>
                 </div>
                 <div class="shopping-grid">
                     <div class="category-card">
@@ -906,11 +907,13 @@
 
         <h2 class="section-title" style="margin-bottom:0.75rem;">Meal Instructions</h2>
 
+        <!-- Meal 1: Monday (Week 1) -->
+		
         <div class="meal-card" id="card_w1_d1">
             <div class="meal-header">
                 <input type="checkbox" id="w1_d1_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w1_d1')">
-                    <h3 class="meal-title">Monday: Crispy Air-Fried Chicken Thighs with Steamed Rice & Mixed Veg</h3>
+                    <h3 class="meal-title">1. Crispy Air-Fried Chicken Thighs with Steamed Rice & Peas</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -920,7 +923,7 @@
                     <ul>
                         <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d1_i1"><span>300g Chicken Thighs</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i2"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d1_i3"><span>150g Frozen Mixed Veg</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d1_i3"><span>150g Frozen Peas</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i4"><span>1 tbsp Oil</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i5"><span>Salt</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d1_i6"><span>Pepper</span></label></li>
@@ -932,17 +935,19 @@
                         <li><strong>Prep Chicken:</strong> Pat 300g chicken thighs completely dry with kitchen towel. Rub evenly with 1 tbsp cooking oil, 1 tsp garlic powder, salt, and black pepper.</li>
                         <li><strong>Air Fry Chicken:</strong> Place the chicken thighs in Zone 1 (Air Fry @ 200°C for 18–20 minutes) flipping them halfway through to ensure an extra-crispy skin.</li>
                         <li><strong>Cook Rice:</strong> Rinse 150g white rice under cold water until it runs clear. Combine in a saucepan with 300ml cold water and a pinch of salt. Bring to a rolling boil over medium-high heat, cover tightly with a lid, reduce heat to the lowest setting, and simmer for 10 minutes. Turn off the heat and leave covered to steam for 5 more minutes.</li>
-                        <li><strong>Steam Veg:</strong> Steam or boil 150g frozen mixed vegetables for 4–5 minutes until tender. Fluff the rice with a fork and serve alongside the crispy chicken and hot vegetables.</li>
+                        <li><strong>Steam Veg:</strong> Steam or boil 150g frozen peas for 4–5 minutes until tender. Fluff the rice with a fork and serve alongside the crispy chicken and hot vegetables.</li>
                     </ol>
                 </div>
             </div>
         </div>
 
+        <!-- Meal 2: Tuesday (Week 1) -->
+		
         <div class="meal-card" id="card_w1_d2">
             <div class="meal-header">
                 <input type="checkbox" id="w1_d2_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w1_d2')">
-                    <h3 class="meal-title">Tuesday: Broccoli, Bacon & Cheese Pasta Bake</h3>
+                    <h3 class="meal-title">2. Broccoli, Bacon & Cheese Pasta Bake</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -971,48 +976,13 @@
             </div>
         </div>
 
-        <div class="meal-card" id="card_w1_d3">
-            <div class="meal-header">
-                <input type="checkbox" id="w1_d3_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w1_d3')">
-                    <h3 class="meal-title">Wednesday: Beef Patties with Garlic Mash, Carrots, Honey Parsnips & Gravy</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d3_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i2"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i3"><span>150g Parsnips</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i4"><span>2 Carrots</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i5"><span>100g Broccoli</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i6"><span>1 clove Garlic</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d3_i7"><span>2 Yorkshire Puddings</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d3_i8"><span>20g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d3_i9"><span>30ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i10"><span>1 tbsp Honey</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i11"><span>1/2 tbsp Oil</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i12"><span>20g Gravy Granules</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Air Fry Beef Patties:</strong> Shape 250g beef mince into 2 flat patties and season with salt and pepper. Place the beef patties in Zone 1 (Roast @ 190°C for 10–12 minutes) until fully cooked through.</li>
-                        <li><strong>Roast Parsnips & Yorkshires:</strong> Toss 150g parsnip batons in 1/2 tbsp oil, 1 tbsp honey, salt, and pepper. Place them in Zone 2 (Roast @ 190°C for 12–15 minutes). Pop 2 frozen Yorkshire puddings into Zone 2 for the final 2 minutes alongside the parsnips.</li>
-                        <li><strong>Make Garlic Mash:</strong> Peel and cube 400g potatoes. Add to pan with garlic clove and boil in salted water for 15 minutes until fork-tender; drain well. Mash with 20g butter, 30ml milk, salt, and pepper until smooth and creamy.</li>
-                        <li><strong>Boil Veg & Gravy:</strong> Boil chopped carrots and 100g broccoli for 6 minutes until tender. Mix 20g beef gravy granules with 250ml boiling water in a jug, stirring until smooth, and serve hot over the meal.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
+        <!-- Meal 3: Wednesday (Week 1) -->
+		
         <div class="meal-card" id="card_w1_d4">
             <div class="meal-header">
                 <input type="checkbox" id="w1_d4_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w1_d4')">
-                    <h3 class="meal-title">Thursday: Chicken & Mixed Veg Egg Fried Rice</h3>
+                    <h3 class="meal-title">3. Chicken & Mixed Veg Egg Fried Rice</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1038,11 +1008,13 @@
             </div>
         </div>
 
+        <!-- Meal 4: Thursday (Week 1) -->
+		
         <div class="meal-card" id="card_w1_d5">
             <div class="meal-header">
                 <input type="checkbox" id="w1_d5_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w1_d5')">
-                    <h3 class="meal-title">Friday: Pork Chops, Roast Carrots & Honey Parsnips, Mash & Gravy</h3>
+                    <h3 class="meal-title">4. Pork Chops, Roast Carrots & Honey Parsnips, Mash & Gravy</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1051,9 +1023,9 @@
                     <strong>Ingredients:</strong>
                     <ul>
                         <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d5_i1"><span>2 Pork Chops</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i2"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i3"><span>150g Parsnips</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i4"><span>2 Carrots</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i2"><span>400g Potato</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i3"><span>150g Parsnip</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i4"><span>2 Carrot</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d5_i5"><span>100g Broccoli</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d5_i6"><span>100g Peas</span></label></li>
                         <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d5_i7"><span>20g Butter</span></label></li>
@@ -1074,11 +1046,13 @@
             </div>
         </div>
 
-        <div class="meal-card" id="card_w1_d6">
+        <!-- Meal 5: Friday (Week 1) -->
+		
+        <div class="meal-card" id="card_w1_d2">
             <div class="meal-header">
-                <input type="checkbox" id="w1_d6_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w1_d6')">
-                    <h3 class="meal-title">Saturday: Beef, Sweetcorn & Mushroom Cottage Pie</h3>
+                <input type="checkbox" id="w1_d2_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_w1_d2')">
+                    <h3 class="meal-title">5. Cheesy Sausage, Mash & Onion Gravy Bake</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1086,35 +1060,33 @@
                 <div class="ingredients-box">
                     <strong>Ingredients:</strong>
                     <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d6_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d6_i2"><span>1 Onion</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d6_i3"><span>2 Carrots</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d6_i4"><span>100g Mushrooms</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d6_i5"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d6_i6"><span>150g Sweetcorn</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d6_i7"><span>15g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d6_i8"><span>30ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d6_i9"><span>20g Plain Flour</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d6_i10"><span>20g Gravy Granules</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d6_i11"><span>2 tsp Lea & Perrins</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d2_d2_i1"><span>4 Pork Sausages</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d2_d2_i2"><span>400g Potato</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d2_d2_i3"><span>2 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d2_d2_i4"><span>20g Butter</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d2_d2_i5"><span>30ml Milk</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d2_d2_i6"><span>80g Cheese</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d2_d2_i7"><span>20g Gravy Granules</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d2_d2_i8"><span>1tbsp Oil</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Prepare Potato Mash:</strong> Peel and cube 400g potatoes and boil in salted water for 15 minutes until tender; drain well. Mash with 15g butter, 30ml milk, salt, and pepper until fluffy. Set aside.</li>
-                        <li><strong>Cook Beef Filling:</strong> Heat 1/2 tbsp oil in a frying pan over medium-high heat. Fry 200g beef mince and 1 finely diced onion for 5–6 minutes until the meat is browned. Add 2 diced carrots and 100g sliced mushrooms, cooking for another 2–3 minutes until softened.</li>
-                        <li><strong>Thicken Gravy Base:</strong> Sprinkle 20g plain flour directly over the beef and vegetable mixture, stirring continuously for 1–2 minutes. Gradually pour in 350ml boiling water whisked with 20g beef gravy granules and 2 tsp Lea & Perrins. Reduce heat and simmer gently for 3–4 minutes until thick and glossy. Stir in 150g sweetcorn and remove from heat.</li>
-                        <li><strong>Assemble & Bake:</strong> Transfer the rich beef filling into an air-fryer safe baking dish. Spread the potato mash evenly over the top, roughing up the surface with a fork to create crispy ridges. Place the dish in Zone 1 (Air Fry @ 190°C for 10–12 minutes) until the potato peaks are golden brown and crisp.</li>
+                        <li><strong>Cook Sausages & Potatoes:</strong> Place 4 pork sausages in Zone 1 (Air Fry @ 180°C for 12–14 minutes) until browned and cooked through, then slice into bite-sized pieces. Meanwhile, boil 400g potatoes for 15 minutes and mash with 20g butter and 30ml milk.</li>
+                        <li><strong>Make Onion Gravy:</strong> Thinly slice 2 onions and fry gently in 1 tbsp oil over medium-low heat for 10 minutes until soft and caramelized. Stir in 20g beef gravy granules dissolved in 250ml boiling water and simmer for 2 minutes.</li>
+                        <li><strong>Bake:</strong> Layer the sliced sausages and rich onion gravy at the bottom of an air-fryer safe dish. Spread the creamy mash over the top, scatter 80g grated cheese across the surface, place the dish in Zone 1 (Air Fry @ 190°C for 6–8 minutes) until bubbling and golden.</li>
                     </ol>
                 </div>
             </div>
         </div>
 
-        <div class="meal-card" id="card_w1_d7">
+        <!-- Meal 6: Saturday (Week 1) -->
+		
+        <div class="meal-card" id="card_w1_d3">
             <div class="meal-header">
-                <input type="checkbox" id="w1_d7_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w1_d7')">
-                    <h3 class="meal-title">Sunday: Air-Fried Bacon, Honey Parsnip & Potato Hash with Fried Eggs</h3>
+                <input type="checkbox" id="w1_d3_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_w1_d3')">
+                    <h3 class="meal-title">6. Traditional Spaghetti Bolognese</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1122,43 +1094,81 @@
                 <div class="ingredients-box">
                     <strong>Ingredients:</strong>
                     <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d7_i1"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d7_i2"><span>100g Parsnips</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d7_i3"><span>200g Bacon</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d7_i4"><span>100g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d7_i5"><span>4 Eggs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d7_i6"><span>1 tbsp Honey</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d7_i7"><span>1/2 tbsp Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d3_i1"><span>250g Beef Mince</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i2"><span>1 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i3"><span>1 Carrot</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d3_i4"><span>1 clove Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i5"><span>150g Spaghetti</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i6"><span>1 tin Chopped Tomato</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i7"><span>1 Beef Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i8"><span>300ml Water</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i9"><span>1 tbsp Lea & Perrins</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i10"><span>Salt</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i11"><span>Pepper</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w1_d3_i12"><span>1 tbsp Oil</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Parboil Hash Base:</strong> Peel and dice 400g potatoes and 100g parsnips into small, bite-sized cubes. Place in a pan of boiling water for 5 minutes to partially soften, then drain thoroughly on kitchen paper.</li>
-                        <li><strong>Air Fry Bacon & Hash:</strong> Toss veg and bacon with 1/2 tbsp oil, 1 tbsp honey, salt, and pepper, and place in Zone 1 (Air Fry @ 200°C for 15–18 minutes). Shake vigorously every 5 minutes.</li>
-                        <li><strong>Melt Cheese:</strong> During the final 2 minutes of cooking, scatter 100g grated cheese evenly across the top, closing the drawer to let it melt into a gooey layer.</li>
-                        <li><strong>Fry Eggs & Serve:</strong> While the cheese melts, fry 4 eggs in a skillet on the hob to your liking. Scoop the loaded hash onto plates and top each portion with fried eggs.</li>
+                        <li><strong>Prep the Base (Soffritto):</strong> Finely dice the onion and carrot. Mince the garlic.</li>
+                        <li><strong>Build the Sauce:</strong> In a skillet over medium heat, brown 250g beef mince with the onion, carrot, and garlic. Stir in 1 tbsp tomato purée and cook for 1 minute. Pour in the 1 tin chopped tomatoes, the 300ml beef stock, and 1 tbsp Lea & Perrins. Season with a good pinch of salt and black pepper.</li>
+                        <li><strong>The Long Simmer:</strong> Bring it to a gentle bubble, then turn the heat down to low. Let it simmer uncovered for 15 to 20 minutes, stirring occasionally. Tip: If it starts looking a little dry while simmering, splash in a tiny bit more water — this ensures you end up with plenty of loose, glossy sauce.</li>
+                        <li><strong>Cook the Pasta:</strong> While the sauce finishes simmering, boil 1.5 litres of salted water and cook 150g spaghetti according to packet instructions (about 9 minutes) until al dente. Drain, reserving a tiny splash of the starchy pasta water.</li>
+                        <li><strong>Combine:</strong> Toss the drained spaghetti directly into the bubbling meat sauce. Pour in that reserved splash of pasta water and toss vigorously for 1 minute so the rich sauce hugs every single strand of spaghetti.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meal 7: Sunday (Week 1) -->
+		
+        <div class="meal-card" id="card_w1_d7">
+            <div class="meal-header">
+                <input type="checkbox" id="w1_d7_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_w1_d7')">
+                    <h3 class="meal-title">7. Loaded Bacon & Sweetcorn Jacket Potatoes</h3>
+                    <span class="chevron"></span>
+                </div>
+            </div>
+            <div class="meal-body">
+                <div class="ingredients-box">
+                    <strong>Ingredients:</strong>
+                    <ul>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w1_d7_i1"><span>2 Baking Potato</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w1_d7_i2"><span>200g Bacon</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d7_i3"><span>150g Sweetcorn</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d7_i4"><span>80g Cheese</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w1_d7_i5"><span>15g Butter</span></label></li>
+                    </ul>
+                </div>
+                <div class="instructions-list">
+                    <ol>
+                        <li><strong>Prep:</strong> Take 2 large potatoes, prick all over with a fork. Microwave on HIGH for 6–8 minutes until soft in the middle. Dice the bacon.</li>
+                        <li><strong>Air Fry Jackets:</strong> Rub potato skins with oil and salt. Place one potato in Zone 1 and one in Zone 2 (Air Fry @ 200°C for 18–22 minutes) until insides are fluffy and skins are extra crisp.</li>
+                        <li><strong>Fry Filling & Load:</strong> Fry 200g diced bacon until crisp, then stir in 150g sweetcorn for 2 minutes to warm through. Split open the baked potatoes, mash the insides slightly with 15g butter, and load with the bacon, sweetcorn, and 80g cheese.</li>
                     </ol>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- WEEK 2 -->
+    <!-- COMFORT MEALS -->
+	
     <div id="week2" class="tab-content">
         <div class="tab-header-row">
-            <h2 class="section-title">📅 Week 2</h2>
-            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset All</button>
+            <h2 class="section-title">🍲 Comfort Meals</h2>
+            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset</button>
         </div>
 
         <div class="shopping-card" id="shop_w2">
             <div class="shopping-header" onclick="toggleCard('shop_w2')">
-                <h2 class="section-title">🛒 Week 2 Ingredients List</h2>
+                <h2 class="section-title">🛒 Ingredients</h2>
                 <span class="chevron"></span>
             </div>
             <div class="shopping-body">
                 <div class="week-actions-bar">
-                    <button class="select-all-btn" onclick="toggleSelectAll('week2')">Select All Week 2</button>
-                    <button class="reset-week-btn" onclick="resetSingleWeek('week2')">Reset Week 2</button>
+                    <button class="select-all-btn" onclick="toggleSelectAll('week2')">Select All</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('week2')">Reset</button>
                 </div>
                 <div class="shopping-grid">
                     <div class="category-card">
@@ -1183,11 +1193,13 @@
 
         <h2 class="section-title" style="margin-bottom:0.75rem;">Meal Instructions</h2>
 
+		<!-- Comfort Meal 1: Creamy Mustard Chicken and Mushrooms -->
+		
         <div class="meal-card" id="card_w2_d1">
             <div class="meal-header">
                 <input type="checkbox" id="w2_d1_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w2_d1')">
-                    <h3 class="meal-title">Monday: Roast Chicken Thighs with Garlic Mash & Roast Veg</h3>
+                    <h3 class="meal-title">1. Creamy Mustard Chicken and Mushrooms with Spring Onion Mash and Peas</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1195,35 +1207,38 @@
                 <div class="ingredients-box">
                     <strong>Ingredients:</strong>
                     <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d1_i1"><span>300g Chicken Thighs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i2"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i3"><span>150g Parsnips</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i4"><span>2 Carrots</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i5"><span>100g Broccoli</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i6"><span>1 clove Garlic</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d1_i7"><span>100g Peas</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d1_i8"><span>20g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d1_i9"><span>30ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d1_i10"><span>1tbsp Honey</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d1_i11"><span>1tbsp Oil</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d1_i12"><span>20g Chicken Gravy Granules</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d1_i1"><span>300g Chicken Breast</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i2"><span>400g Potato</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i3"><span>1 Bunch Spring Onions</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i4"><span>150g Mushrooms</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d1_i5"><span>1 clove Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d1_i6"><span>15g Butter</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d1_i7"><span>15g Plain Flour</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d1_i8"><span>200ml Milk</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d1_i9"><span>1 Chicken Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d1_i10"><span>1 tbsp Wholegrain Mustard</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d1_i11"><span>150g Frozen Peas</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d1_i12"><span>1 tbsp Oil</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Air Fry Chicken & Veg:</strong> Toss the veg with 1 tbsp oil, 1 tbsp honey, salt, and pepper. Place 300g chicken thighs in Zone 1 (Air Fry @ 190°C for 20 minutes), and your carrot and parsnip batons in Zone 2 (Roast @ 190°C for 15 minutes). Shake the vegetables halfway through, until chicken is cooked through and skin is crisp.</li>
-                        <li><strong>Make Garlic Mash & Greens:</strong> Boil 400g cubed potatoes and 1 clove of garlic for 15 minutes until tender, then drain and mash with 20g butter, and 30ml milk. Boil 100g broccoli and 100g peas for 4 minutes.</li>
-                        <li><strong>Make Gravy & Serve:</strong> Mix 20g chicken gravy granules with 250ml boiling water and serve hot over the roast dinner.</li>
+                        <li><strong>Prep & Boil:</strong> Peel and chop 400g potatoes into chunks. Boil in salted water (approx. 1.5 litres) for 15–20 minutes until tender.</li>
+                        <li><strong>Cook Chicken & Veg:</strong> Heat 1 tbsp oil in a frying pan over medium-high heat. Season 300g diced chicken breast with salt and pepper, then fry until golden and cooked through. Add sliced mushrooms and minced garlic, cooking until soft. Remove everything from the pan and set aside in a bowl.</li>
+                        <li><strong>Make the Roux & Sauce:</strong> In the same pan over medium-low heat, melt 15g butter, stir in 15g plain flour for 1 minute, then gradually whisk in 200ml milk and 50ml water until smooth and thickened. Crumble in half a chicken stock cube and stir in 1 tbsp wholegrain mustard.</li>
+                        <li><strong>Combine, Mash & Serve:</strong> Return the cooked chicken, mushrooms, and any resting juices back into the rich sauce and simmer until piping hot. Drain potatoes, mash with a splash of milk or butter and sliced spring onions, and serve alongside the peas (boiled or microwaved with 2 tbsp water).</li>
                     </ol>
                 </div>
             </div>
         </div>
 
+        <!-- Comfort Meal 2: Sausages and Onion Gravy -->
+		
         <div class="meal-card" id="card_w2_d2">
             <div class="meal-header">
                 <input type="checkbox" id="w2_d2_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w2_d2')">
-                    <h3 class="meal-title">Tuesday: Cheesy Sausage, Mash & Onion Gravy Bake</h3>
+                    <h3 class="meal-title">2. Sausages & Homemade Onion Gravy with Spinach Mash & Roasted Carrots</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1231,31 +1246,35 @@
                 <div class="ingredients-box">
                     <strong>Ingredients:</strong>
                     <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d2_i1"><span>4 Pork Sausages</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d2_i2"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d2_i3"><span>2 Onions</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d2_i4"><span>20g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d2_i5"><span>30ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d2_i6"><span>80g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d2_i7"><span>20g Beef Gravy Granules</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d2_i8"><span>1tbsp Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d2_i1"><span>4 Sausages</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d2_i2"><span>2 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d2_i3"><span>2 Carrot</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d2_i4"><span>400g Potato</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d2_i5"><span>100g Baby Spinach</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d2_i6"><span>1 Beef Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d2_i7"><span>1 tbsp Balsamic Vinegar</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d2_i8"><span>1 tbsp Redcurrant Jelly</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d2_i9"><span>1 tbsp Oil</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Cook Sausages & Potatoes:</strong> Place 4 pork sausages in Zone 1 (Air Fry @ 180°C for 12–14 minutes) until browned and cooked through, then slice into bite-sized pieces. Meanwhile, boil 400g potatoes for 15 minutes and mash with 20g butter and 30ml milk.</li>
-                        <li><strong>Make Onion Gravy:</strong> Thinly slice 2 onions and fry gently in 1 tbsp oil over medium-low heat for 10 minutes until soft and caramelized. Stir in 20g beef gravy granules dissolved in 250ml boiling water and simmer for 2 minutes.</li>
-                        <li><strong>Bake:</strong> Layer the sliced sausages and rich onion gravy at the bottom of an air-fryer safe dish. Spread the creamy mash over the top, scatter 80g grated cheese across the surface, place the dish in Zone 1 (Air Fry @ 190°C for 6–8 minutes) until bubbling and golden.</li>
+                        <li><strong>Roast Carrots:</strong> Peel and cut 300g carrots into batons, toss with 1 tbsp oil, salt, and pepper, and roast at 200°C for 20–25 minutes.</li>
+                        <li><strong>Cook Sausages & Onions:</strong> Place 4 sausages in a frying pan or oven tray and cook until browned and thoroughly cooked. In a separate pan, slice and fry 2 red onions gently until soft and caramelised.</li>
+                        <li><strong>Make Gravy:</strong> Dissolve 1 beef stock cube in 150ml boiling water. Add 1 tbsp balsamic vinegar, 1 tbsp redcurrant jelly, and the beef stock directly to the onions. Simmer until rich and glossy.</li>
+                        <li><strong>Mash & Serve:</strong> Boil 400g potatoes in salted water for 15 minutes until tender, then mash them incorporating 100g fresh baby spinach until it wilts into the hot mash. Serve the sausages smothered in the onion gravy, with the roasted carrots and spinach mash on the side.</li>
                     </ol>
                 </div>
             </div>
         </div>
 
+        <!-- Comfort Meal 3: Bacon and Mushroom Risotto -->
+		
         <div class="meal-card" id="card_w2_d3">
             <div class="meal-header">
                 <input type="checkbox" id="w2_d3_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w2_d3')">
-                    <h3 class="meal-title">Wednesday: Traditional Spaghetti Bolognese</h3>
+                    <h3 class="meal-title">3. Bacon and Mushroom Risotto with Peas, Leeks and Italian Style Cheese</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1263,37 +1282,34 @@
                 <div class="ingredients-box">
                     <strong>Ingredients:</strong>
                     <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d3_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d3_i2"><span>1 Onion</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d3_i3"><span>1 Carrot</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d3_i4"><span>1 clove Garlic</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i5"><span>150g Spaghetti</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i6"><span>1 tin Chopped Tomatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i7"><span>1 Beef Stock Cube</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i8"><span>300ml Water</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i9"><span>1 tbsp Lea & Perrins</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i10"><span>Salt</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i11"><span>Pepper</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i12"><span>1 tbsp Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d3_i1"><span>150g Smoked Lardons</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d3_i2"><span>1 clove Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i3"><span>180g Risotto Rice</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d3_i4"><span>1 Vegetable Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d3_i5"><span>1 Leek</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d3_i6"><span>150g Mushrooms</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d3_i7"><span>100g Frozen Peas</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d3_i8"><span>50g Grated Hard Italian Cheese</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Prep the Base (Soffritto):</strong> Finely dice the onion and carrot. Mince the garlic.</li>
-                        <li><strong>Build the Sauce:</strong> In a skillet over medium heat, brown 250g beef mince with the onion, carrot, and garlic. Stir in 1 tbsp tomato purée and cook for 1 minute. Pour in the 1 tin chopped tomatoes, the 300ml beef stock, and 1 tbsp Lea & Perrins. Season with a good pinch of salt and black pepper.</li>
-                        <li><strong>The Long Simmer:</strong> Bring it to a gentle bubble, then turn the heat down to low. Let it simmer uncovered for 15 to 20 minutes, stirring occasionally. Tip: If it starts looking a little dry while simmering, splash in a tiny bit more water — this ensures you end up with plenty of loose, glossy sauce.</li>
-                        <li><strong>Cook the Pasta:</strong> While the sauce finishes simmering, boil 1.5 litres of salted water and cook 150g spaghetti according to packet instructions (about 9 minutes) until al dente. Drain, reserving a tiny splash of the starchy pasta water.</li>
-                        <li><strong>Combine:</strong> Toss the drained spaghetti directly into the bubbling meat sauce. Pour in that reserved splash of pasta water and toss vigorously for 1 minute so the rich sauce hugs every single strand of spaghetti.</li>
+                        <li><strong>Crisp the Bacon:</strong> In a large pan or saucepan, fry 150g smoked lardons until crisp. Remove with a slotted spoon (leave the fat in the pan) and set aside.</li>
+                        <li><strong>Start Risotto Base:</strong> In the same pan, soften a chopped leek, 150g sliced mushrooms, and 1 minced garlic clove. Add 180g risotto rice and stir for 1 minute until translucent.</li>
+                        <li><strong>Cook the Rice:</strong> Dissolve 1 vegetable stock cube in 600ml warm water. Gradually add the stock to the rice a ladle at a time, stirring continuously and letting it absorb before adding the next, until the rice is creamy and tender (about 20–25 minutes). Stir in 100g peas and a splash of water for the last few minutes if needed.</li>
+                        <li><strong>Finish & Serve:</strong> Stir half the crispy bacon and a generous handful of 50g grated Italian cheese into the risotto. Top with the remaining bacon and extra cheese to serve.</li>
                     </ol>
                 </div>
             </div>
         </div>
 
+        <!-- Comfort Meal 4: Philly Cheesesteak Inspired Beef Rice Bowl -->
+		
         <div class="meal-card" id="card_w2_d4">
             <div class="meal-header">
                 <input type="checkbox" id="w2_d4_done" onclick="event.stopPropagation()">
                 <div class="meal-header-clickable" onclick="toggleCard('card_w2_d4')">
-                    <h3 class="meal-title">Thursday: Cheesy Ham, Egg, Potato & Honey Parsnip Hash</h3>
+                    <h3 class="meal-title">4. Philly Cheesesteak Inspired Beef Rice Bowl with Bell Pepper, Mushrooms & Onion</h3>
                     <span class="chevron"></span>
                 </div>
             </div>
@@ -1301,617 +1317,28 @@
                 <div class="ingredients-box">
                     <strong>Ingredients:</strong>
                     <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d4_i1"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d4_i2"><span>100g Parsnips</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d4_i3"><span>150g Cooked Ham</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d4_i4"><span>80g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d4_i5"><span>4 Eggs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d4_i6"><span>1 tbsp Honey</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d4_i7"><span>1 tbsp Oil</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d4_i1"><span>150g White Rice</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d4_i2"><span>1 Onion</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d4_i3"><span>1 Bell Pepper</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d4_i4"><span>150g Mushrooms</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d4_i5"><span>1 clove Garlic</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d4_i6"><span>1 Beef Stock Cube</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d4_i7"><span>250g Beef Mince</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d4_i8"><span>1 tbsp Worcestershire Sauce</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d4_i9"><span>80g Mature Cheddar Cheese</span></label></li>
                     </ul>
                 </div>
                 <div class="instructions-list">
                     <ol>
-                        <li><strong>Parboil & Air Fry Hash:</strong> Dice 400g potatoes and 100g parsnips, parboil in boiling water for 5 minutes, then drain well. Toss with 1 tbsp oil, 1 tbsp honey, salt, and pepper. Place in Zone 2 (Air Fry @ 200°C for 12 minutes), shaking halfway.</li>
-                        <li><strong>Add Ham & Cheese:</strong> Dice 150g cooked ham, stir into the Zone 1 basket (Air Fry @ 200°C for 4 minutes). Sprinkle 80g grated cheese across both and let melt for 2 minutes.</li>
-                        <li><strong>Fry Eggs & Serve:</strong> Fry 4 eggs in a skillet on the hob and serve them right on top of the loaded hash.</li>
+                        <li><strong>Cook Rice:</strong> Rinse 150g white rice, combine with 300ml cold water and a pinch of salt in a saucepan, bring to a boil, cover tightly, reduce to lowest heat for 10 minutes, then rest off the heat for 5 minutes.</li>
+                        <li><strong>Sauté Veg:</strong> Slice 1 onion, 1 bell pepper, and 150g mushrooms. Fry them in a hot pan with a little oil until caramelised and tender. Add 1 minced garlic clove towards the end.</li>
+                        <li><strong>Cook Beef:</strong> Add 250g beef mince to the pan, browning it thoroughly. Stir in 50ml water mixed with half a beef stock cube, and 1 tbsp Worcestershire sauce. Let it reduce slightly into a rich coating sauce.</li>
+                        <li><strong>Assemble:</strong> Spoon the rice into bowls, top with the cheesy Philly-style beef and vegetable mix, and scatter over 80g grated cheddar cheese (it will melt from the heat of the meat).</li>
                     </ol>
                 </div>
             </div>
         </div>
 
-        <div class="meal-card" id="card_w2_d5">
-            <div class="meal-header">
-                <input type="checkbox" id="w2_d5_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w2_d5')">
-                    <h3 class="meal-title">Friday: Golden Chicken, Egg & Sweetcorn Fried Rice</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d5_i1"><span>300g Chicken Thighs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d5_i2"><span>150g Sweetcorn</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d5_i3"><span>2 Eggs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d5_i4"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d5_i5"><span>15ml Soy Sauce</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d5_i6"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Cook Chicken:</strong> Dice 300g chicken thighs or place them in Zone 1 (Air Fry @ 190°C for 14 minutes) until golden and cooked through. Remove and chop into small pieces.</li>
-                        <li><strong>Scramble Eggs & Stir-Fry:</strong> In a pan on the hob, scramble 2 eggs quickly. Add 150g sweetcorn and 150g cold cooked white rice, turning heat up to high and stir-frying for 3 minutes.</li>
-                        <li><strong>Combine:</strong> Mix the cooked chicken and 15ml soy sauce back into the pan, toss well until piping hot, and serve.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w2_d6">
-            <div class="meal-header">
-                <input type="checkbox" id="w2_d6_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w2_d6')">
-                    <h3 class="meal-title">Saturday: Cheesy Beef & Caramelized Onion Rice Skillet</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d6_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d6_i2"><span>1 Onion</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d6_i3"><span>100g Frozen Peas</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w2_d6_i4"><span>Garlic</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d6_i5"><span>80g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d6_i6"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d6_i7"><span>1 tsp Lea & Perrins</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d6_i8"><span>1 tbsp Oil</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d6_i9"><span>2 tbsp HP Honey BBQ</span></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d6_i10"><span>1 Beef Oxo Cube</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Cook the Rice:</strong> Start your long grain rice boiling or steaming according to packet instructions so it cooks while you handle the skillet.</li>
-                        <li><strong>Brown the Meat & Veg:</strong> Heat a little oil in a frying pan over medium-high heat. Add your beef mince and a finely diced onion (plus minced garlic if using) and peas, cooking until the meat is thoroughly browned and the onions are soft. Drain off any excess fat.</li>
-                        <li><strong>Create the BBQ Sauce:</strong> Pour in a small splash of water (about 3 to 4 tablespoons—if using a beef Oxo cube, dissolve it in this hot water first). Squeeze in 2 tbsp of HP Honey BBQ sauce. Add extra water if needed if it starts looking dry.</li>
-                        <li><strong>Simmer and Glaze:</strong> Let the mixture bubble gently on medium heat for 3 to 5 minutes, stirring occasionally. The liquids and BBQ sauce will reduce down into a rich, glossy glaze that clings tightly to the beef and peas.</li>
-                        <li><strong>Serve:</strong> Spoon the sticky, savory BBQ beef and peas directly over your freshly cooked long grain rice and tuck in!</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w2_d7">
-            <div class="meal-header">
-                <input type="checkbox" id="w2_d7_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w2_d7')">
-                    <h3 class="meal-title">Sunday: Bacon & Mixed Veg Egg Fried Rice</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w2_d7_i1"><span>100g Bacon</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d7_i2"><span>150g Frozen Mixed Veg</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w2_d7_i3"><span>2 Eggs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d7_i4"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d7_i5"><span>15ml Soy Sauce</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w2_d7_i6"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Fry Bacon:</strong> Dice 100g bacon and fry in a pan over medium heat until crispy; remove and set aside.</li>
-                        <li><strong>Stir-Fry Rice:</strong> In the remaining bacon fat and 1 tbsp oil, scramble 2 eggs. Add 150g frozen mixed veg and 150g cold cooked rice, stir-frying on high heat for 4 minutes.</li>
-                        <li><strong>Finish:</strong> Toss the crispy bacon back in along with 15ml soy sauce, heat through for 1 minute, and serve.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WEEK 3 -->
-    <div id="week3" class="tab-content">
-        <div class="tab-header-row">
-            <h2 class="section-title">📅 Week 3</h2>
-            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset All</button>
-        </div>
-
-        <div class="shopping-card" id="shop_w3">
-            <div class="shopping-header" onclick="toggleCard('shop_w3')">
-                <h2 class="section-title">🛒 Week 3 Ingredients List</h2>
-                <span class="chevron"></span>
-            </div>
-            <div class="shopping-body">
-                <div class="week-actions-bar">
-                    <button class="select-all-btn" onclick="toggleSelectAll('week3')">Select All Week 3</button>
-                    <button class="reset-week-btn" onclick="resetSingleWeek('week3')">Reset Week 3</button>
-                </div>
-                <div class="shopping-grid">
-                    <div class="category-card">
-                        <h3>Meat & Poultry</h3>
-                        <ul id="w3_summary_meat"></ul>
-                    </div>
-                    <div class="category-card">
-                        <h3>Produce</h3>
-                        <ul id="w3_summary_produce"></ul>
-                    </div>
-                    <div class="category-card">
-                        <h3>Chilled, Dairy & Frozen</h3>
-                        <ul id="w3_summary_chilled"></ul>
-                    </div>
-                    <div class="category-card">
-                        <h3>Pantry</h3>
-                        <ul id="w3_summary_pantry"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title" style="margin-bottom:0.75rem;">Meal Instructions</h2>
-
-        <div class="meal-card" id="card_w3_d1">
-            <div class="meal-header">
-                <input type="checkbox" id="w3_d1_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w3_d1')">
-                    <h3 class="meal-title">Monday: Air-Fried Chicken, Roast Carrots & Parsnips with Cheesy Mash</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w3_d1_i1"><span>300g Chicken Thighs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d1_i2"><span>150g Parsnips</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d1_i3"><span>2 Carrots</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d1_i4"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d1_i5"><span>150g Frozen Mixed Veg</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d1_i6"><span>60g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d1_i7"><span>20g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d1_i8"><span>30ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d1_i9"><span>1 tbsp Honey</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d1_i10"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Air Fry Chicken & Root Veg:</strong> Toss the veg with 1 tbsp oil, 1 tbsp honey, salt, and pepper. Place 300g chicken thighs in Zone 1 (Air Fry @ 190°C for 20 minutes) and the carrot and parsnip batons in Zone 2 (Roast @ 190°C for 15 minutes) until cooked through and tender.</li>
-                        <li><strong>Cheesy Mash & Veg:</strong> Boil 400g cubed potatoes for 15 minutes, drain, and mash with 20g butter, 30ml milk, and 60g grated cheddar cheese. Boil 150g mixed veg for 4 minutes and serve together.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w3_d2">
-            <div class="meal-header">
-                <input type="checkbox" id="w3_d2_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w3_d2')">
-                    <h3 class="meal-title">Tuesday: Crispy Pork Chops & Potato Wedges with Gravy</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w3_d2_i1"><span>2 Pork Chops</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d2_i2"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d2_i3"><span>150g Frozen Mixed Veg</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d2_i4"><span>1 tbsp Oil</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d2_i5"><span>20g Beef Gravy Granules</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Air Fry Wedges & Chops:</strong> Add 2 pork chops to Zone 1 (Air Fry @ 200°C for 12–14 minutes), turning chops halfway. Cut 400g potatoes into wedges, toss with 1 tbsp oil, salt, and pepper, and place in Zone 2 (Air Fry @ 200°C for 18–20 minutes).</li>
-                        <li><strong>Boil Veg & Make Gravy:</strong> Boil 150g mixed veg for 4 minutes. Whisk 20g beef gravy granules with 250ml boiling water and serve.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w3_d3">
-            <div class="meal-header">
-                <input type="checkbox" id="w3_d3_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w3_d3')">
-                    <h3 class="meal-title">Wednesday: Ultimate Loaded Cheesy Beef & Potato Hash</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w3_d3_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d3_i2"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d3_i3"><span>1 Onion</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d3_i4"><span>100g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d3_i5"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Parboil & Brown:</strong> Parboil 400g diced potatoes for 5 minutes; drain. In a pan, brown 250g beef mince and 1 diced onion for 5 minutes, draining any excess fat.</li>
-                        <li><strong>Air Fry & Melt Cheese:</strong> Place browned beef mince in Zone 1 (Air Fry @ 200°C for 12–15 minutes). Toss drained potatoes with 1 tbsp oil, salt, and pepper, placing them in Zone 2 (Air Fry @ 200°C for 12–15 minutes). Scatter 100g grated cheese over both drawers and air fry for 2 more minutes to melt.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w3_d4">
-            <div class="meal-header">
-                <input type="checkbox" id="w3_d4_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w3_d4')">
-                    <h3 class="meal-title">Thursday: Cheesy Chicken & Veg Fried Rice</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w3_d4_i1"><span>300g Chicken Thighs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d4_i2"><span>150g Frozen Mixed Veg</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d4_i3"><span>60g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d4_i4"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d4_i5"><span>15ml Soy Sauce</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d4_i6"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Stir-Fry Rice:</strong> Dice 300g chicken thighs and fry in 1 tbsp oil until cooked through (8 minutes). Add 150g frozen mixed veg and 150g cold cooked white rice, stir-frying on high heat for 4 minutes with 15ml soy sauce.</li>
-                        <li><strong>Melt Cheese:</strong> Turn off the heat, scatter 60g grated cheese over the top of the fried rice, and cover the pan with a lid for 2 minutes to melt.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w3_d5">
-            <div class="meal-header">
-                <input type="checkbox" id="w3_d5_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w3_d5')">
-                    <h3 class="meal-title">Friday: Quick Air-Fryer Macaroni Bacon Bake</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w3_d5_i1"><span>100g Bacon</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d5_i2"><span>100g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d5_i3"><span>15g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d5_i4"><span>200ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d5_i5"><span>150g Macaroni</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d5_i6"><span>15g Plain Flour</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Boil Pasta & Fry Bacon:</strong> Boil 150g macaroni in salted water for 8 minutes; drain. Dice and fry 100g bacon until crispy.</li>
-                        <li><strong>Make Cheese Sauce & Bake:</strong> Melt 15g butter, stir in 15g flour, and gradually whisk in 200ml milk until thickened. Stir in 70g cheese until melted. Combine pasta, bacon, and sauce in an air-fryer safe dish, top with the remaining 30g cheese, place in Zone 1 (Air Fry @ 180°C for 6 minutes).</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w3_d6">
-            <div class="meal-header">
-                <input type="checkbox" id="w3_d6_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w3_d6')">
-                    <h3 class="meal-title">Saturday: Easy Beef Cottage Pie with Potato Topping</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w3_d6_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d6_i2"><span>1 Onion</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d6_i3"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d6_i4"><span>15g Gravy Granules</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w3_d6_i5"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Make Filling:</strong> Fry 200g beef mince and 1 diced onion in 1 tbsp oil for 6 minutes until browned. Stir in 15g gravy granules dissolved in 150ml water and simmer for 3 minutes. Transfer into an air-fryer safe baking dish.</li>
-                        <li><strong>Slice Potatoes & Air Fry:</strong> Slice 400g potatoes very thinly, layer them neatly over the beef filling, and brush lightly with oil and salt. Place the dish in Zone 1 (Air Fry @ 190°C for 15 minutes) until the potatoes are tender and golden crisp.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w3_d7">
-            <div class="meal-header">
-                <input type="checkbox" id="w3_d7_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w3_d7')">
-                    <h3 class="meal-title">Sunday: Loaded Bacon & Sweetcorn Jacket Potatoes</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w3_d7_i1"><span>2 Baking Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w3_d7_i2"><span>200g Bacon</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d7_i3"><span>150g Sweetcorn</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d7_i4"><span>80g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w3_d7_i5"><span>15g Butter</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Prep:</strong> Take 2 large potatoes, prick all over with a fork. Microwave on HIGH for 6–8 minutes until soft in the middle. Dice the bacon.</li>
-                        <li><strong>Air Fry Jackets:</strong> Rub potato skins with oil and salt. Place one potato in Zone 1 and one in Zone 2 (Air Fry @ 200°C for 18–22 minutes) until insides are fluffy and skins are extra crisp.</li>
-                        <li><strong>Fry Filling & Load:</strong> Fry 200g diced bacon until crisp, then stir in 150g sweetcorn for 2 minutes to warm through. Split open the baked potatoes, mash the insides slightly with 15g butter, and load with the bacon, sweetcorn, and 80g cheese.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- WEEK 4 -->
-    <div id="week4" class="tab-content">
-        <div class="tab-header-row">
-            <h2 class="section-title">📅 Week 4</h2>
-            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset All</button>
-        </div>
-
-        <div class="shopping-card" id="shop_w4">
-            <div class="shopping-header" onclick="toggleCard('shop_w4')">
-                <h2 class="section-title">🛒 Week 4 Ingredients List</h2>
-                <span class="chevron"></span>
-            </div>
-            <div class="shopping-body">
-                <div class="week-actions-bar">
-                    <button class="select-all-btn" onclick="toggleSelectAll('week4')">Select All Week 4</button>
-                    <button class="reset-week-btn" onclick="resetSingleWeek('week4')">Reset Week 4</button>
-                </div>
-                <div class="shopping-grid">
-                    <div class="category-card">
-                        <h3>Meat & Poultry</h3>
-                        <ul id="w4_summary_meat"></ul>
-                    </div>
-                    <div class="category-card">
-                        <h3>Produce</h3>
-                        <ul id="w4_summary_produce"></ul>
-                    </div>
-                    <div class="category-card">
-                        <h3>Chilled, Dairy & Frozen</h3>
-                        <ul id="w4_summary_chilled"></ul>
-                    </div>
-                    <div class="category-card">
-                        <h3>Pantry</h3>
-                        <ul id="w4_summary_pantry"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title" style="margin-bottom:0.75rem;">Meal Instructions</h2>
-
-        <div class="meal-card" id="card_w4_d1">
-            <div class="meal-header">
-                <input type="checkbox" id="w4_d1_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w4_d1')">
-                    <h3 class="meal-title">Monday: Honey BBQ Chicken Thighs with Rice & Mixed Veg</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w4_d1_i1"><span>300g Chicken Thighs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d1_i2"><span>2 cloves Garlic</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d1_i3"><span>150g Frozen Mixed Veg</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d1_i4"><span>30g HP Honey BBQ</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d1_i5"><span>15g Honey</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d1_i6"><span>15ml Soy Sauce</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d1_i7"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d1_i8"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Glaze & Air Fry Chicken:</strong> Whisk 30g HP Honey BBQ sauce, 15g honey, 2 minced garlic cloves, 15ml soy sauce, and 1 tbsp oil. Coat 300g chicken thighs thoroughly, place in Zone 1 (Air Fry @ 190°C for 16–18 minutes), turning halfway.</li>
-                        <li><strong>Cook Rice & Veg:</strong> Cook 150g white rice with 300ml water (boil, cover, simmer 10 mins, rest 5 mins). Boil 150g mixed veg for 4 minutes and serve together.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w4_d2">
-            <div class="meal-header">
-                <input type="checkbox" id="w4_d2_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w4_d2')">
-                    <h3 class="meal-title">Tuesday: Pork Chops with Creamy Mash, Roast Veg & Gravy</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w4_d2_i1"><span>2 Pork Chops</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d2_i2"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d2_i3"><span>150g Parsnips</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d2_i4"><span>2 Carrots</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d2_i5"><span>100g Broccoli</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d2_i6"><span>100g Peas</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d2_i7"><span>25g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d2_i8"><span>40ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d2_i9"><span>1 tbsp Honey</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d2_i10"><span>1 tbsp Oil</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d2_i11"><span>20g Gravy Granules</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Air Fry Roast Veg & Chops:</strong> Add 2 pork chops to Zone 1 and cook (Air Fry @ 190°C for 12–14 minutes), turning halfway. Toss carrots and parsnip batons in 1 tbsp oil, 1 tbsp honey, salt, and pepper; place in Zone 2 (Roast @ 180°C for 12–15 minutes).</li>
-                        <li><strong>Mash & Greens:</strong> Boil 400g potatoes for 15 minutes, drain, and mash with 25g butter and 40ml milk. Boil broccoli and peas for 4 minutes, and make gravy.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w4_d3">
-            <div class="meal-header">
-                <input type="checkbox" id="w4_d3_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w4_d3')">
-                    <h3 class="meal-title">Wednesday: Honey BBQ Meatballs Bolognese with Tagliatelle</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w4_d3_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d3_i2"><span>1 Onion</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d3_i3"><span>150g Frozen Mixed Veg</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d3_i4"><span>1 tin Chopped Tomatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d3_i5"><span>3 tbsp HP Honey BBQ</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d3_i6"><span>150g Tagliatelle</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d3_i7"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Air Fry Meatballs:</strong> Mix 250g beef mince with half of 1 diced onion, salt, and pepper. Shape into small meatballs, place in Zone 1 (Air Fry @ 190°C for 8–10 minutes).</li>
-                        <li><strong>Sauce & Pasta:</strong> Fry remaining onion in 1 tbsp oil for 4 minutes. Add 1 tin chopped tomatoes and 3 tbsp HP Honey BBQ sauce; simmer for 10 minutes, then drop in the cooked meatballs. Boil 150g tagliatelle and mixed veg, then toss together.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w4_d4">
-            <div class="meal-header">
-                <input type="checkbox" id="w4_d4_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w4_d4')">
-                    <h3 class="meal-title">Thursday: Shredded Chicken & Sweetcorn Fried Rice</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w4_d4_i1"><span>300g Chicken Thighs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d4_i2"><span>150g Sweetcorn</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d4_i3"><span>2 Eggs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d4_i4"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d4_i5"><span>15ml Soy Sauce</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d4_i6"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Cook & Shred Chicken:</strong> Place 300g chicken thighs in Zone 1 (Air Fry @ 190°C for 16 minutes), then shred using two forks.</li>
-                        <li><strong>Fried Rice:</strong> Heat 1 tbsp oil in a pan, scramble 2 eggs, add 150g sweetcorn and 150g cold cooked white rice, and stir-fry on high heat for 3 minutes. Toss in shredded chicken and 15ml soy sauce to finish.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w4_d5">
-            <div class="meal-header">
-                <input type="checkbox" id="w4_d5_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w4_d5')">
-                    <h3 class="meal-title">Friday: Loaded Cheesy Bacon, Broccoli & Penne Bake</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w4_d5_i1"><span>100g Bacon</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d5_i2"><span>100g Broccoli</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d5_i3"><span>100g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d5_i4"><span>15g Butter</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d5_i5"><span>200ml Milk</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d5_i6"><span>150g Penne</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d5_i7"><span>15g Plain Flour</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Prep Pasta & Bacon:</strong> Boil 150g penne and 100g broccoli together in salted water for 8 minutes; drain. Fry 100g bacon until crispy.</li>
-                        <li><strong>Cheese Sauce & Bake:</strong> Melt 15g butter, stir in 15g flour, and whisk in 200ml milk until thick. Stir in 70g cheese. Combine pasta, broccoli, bacon, and sauce in an air-fryer safe dish, top with the remaining 30g cheese, place in Zone 1 (Air Fry @ 180°C for 6 minutes).</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w4_d6">
-            <div class="meal-header">
-                <input type="checkbox" id="w4_d6_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w4_d6')">
-                    <h3 class="meal-title">Saturday: Easy Beef Mince & Cheesy Potato Bake</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w4_d6_i1"><span>250g Beef Mince</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d6_i2"><span>1 Onion</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="w4_d6_i3"><span>400g Potatoes</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d6_i4"><span>80g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d6_i5"><span>15g Gravy Granules</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Parboil & Brown:</strong> Parboil 400g cubed potatoes for 6 minutes; drain. Fry 200g beef mince and 1 diced onion for 5 minutes, then stir in 15g gravy granules dissolved in 150ml water.</li>
-                        <li><strong>Bake:</strong> Layer the mince and potatoes in an air-fryer safe dish, top with 80g cheese, place in Zone 1 (Air Fry @ 190°C for 10 minutes) until potatoes are soft and cheese is bubbling.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-
-        <div class="meal-card" id="card_w4_d7">
-            <div class="meal-header">
-                <input type="checkbox" id="w4_d7_done" onclick="event.stopPropagation()">
-                <div class="meal-header-clickable" onclick="toggleCard('card_w4_d7')">
-                    <h3 class="meal-title">Sunday: Loaded Bacon & Cheese Fried Rice</h3>
-                    <span class="chevron"></span>
-                </div>
-            </div>
-            <div class="meal-body">
-                <div class="ingredients-box">
-                    <strong>Ingredients:</strong>
-                    <ul>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="meat" id="w4_d7_i1"><span>200g Bacon</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d7_i2"><span>2 Eggs</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="w4_d7_i3"><span>80g Cheese</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d7_i4"><span>150g White Rice</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d7_i5"><span>15ml Soy Sauce</span></label></li>
-                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="w4_d7_i6"><span>1 tbsp Oil</span></label></li>
-                    </ul>
-                </div>
-                <div class="instructions-list">
-                    <ol>
-                        <li><strong>Fry Bacon & Eggs:</strong> Crisp 200g diced bacon in a pan; set aside. In the same pan with 1 tbsp oil, scramble 2 eggs.</li>
-                        <li><strong>Stir-Fry & Melt:</strong> Add 150g cold cooked rice and 15ml soy sauce; stir-fry for 3 minutes. Stir the bacon back in. Turn off the heat, scatter 80g cheese over the top, and cover the pan for 2 minutes to let the cheese melt.</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -2224,16 +1651,10 @@
         <span>Shopping</span>
     </button>
     <button class="tab-btn" onclick="openTab('week1', this)">
-        <span>Week 1</span>
+        <span>Quick</span>
     </button>
     <button class="tab-btn" onclick="openTab('week2', this)">
-        <span>Week 2</span>
-    </button>
-    <button class="tab-btn" onclick="openTab('week3', this)">
-        <span>Week 3</span>
-    </button>
-    <button class="tab-btn" onclick="openTab('week4', this)">
-        <span>Week 4</span>
+        <span>Comfort</span>
     </button>
 </nav>
 
@@ -2457,11 +1878,10 @@
         }
     }
 
-    const DAY_NAMES = { d1: 'Mon', d2: 'Tue', d3: 'Wed', d4: 'Thu', d5: 'Fri', d6: 'Sat', d7: 'Sun' };
+    const DAY_NAMES = { d1: 'Mon', d2: 'Tue', d3: 'Wed', d4: 'Thu', d5: 'Fri', d6: 'Sat', d7: 'Sun', d8: 'Sun' };
 
     function parseIngredientDetails(rawText) {
         let text = rawText.replace(/\(.*?\)/g, '').trim();
-        // Match explicit unit measurements like 150g, 200ml, 1 tbsp, 2 tsp
         const matchUnit = text.match(/^([\d\.\/]+)\s*(g|kg|ml|l|tbsp|tsp)\b/i);
         let amount = 0;
         let unit = 'g';
@@ -2495,7 +1915,6 @@
                 unit = rawUnit;
             }
         } else {
-            // Match plain numbers without explicit g/ml units (e.g. "2 Eggs", "1 Onion", "2 Pork Chops")
             const matchCount = text.match(/^([\d\.\/]+)\b/);
             if (matchCount) {
                 let numStr = matchCount[1];
@@ -2523,7 +1942,8 @@
         if (mealCard && mealCard.id) {
             const parts = mealCard.id.replace('card_', '').split('_');
             if (parts.length >= 2) {
-                return [DAY_NAMES[parts[1]] || parts[1].toUpperCase()];
+                const dayKey = parts[parts.length - 1];
+                return [DAY_NAMES[dayKey] || dayKey.toUpperCase()];
             }
         }
         return [];
@@ -2577,7 +1997,8 @@
 
     function resetSingleWeek(weekId) {
         triggerHaptic();
-        if (confirm(`Reset all checkboxes for ${weekId.toUpperCase()}?`)) {
+        const menuName = weekId === 'week2' ? 'Comfort' : 'Quick';
+        if (confirm(`Reset all checkboxes for ${menuName}?`)) {
             const weekTab = document.getElementById(weekId);
             const checkboxes = weekTab.querySelectorAll('.ing-check');
             checkboxes.forEach(cb => {
@@ -2599,18 +2020,18 @@
     }
 
     function renderWeeklySummaries() {
-        const weeks = ['week1', 'week2', 'week3', 'week4'];
+        const weeks = ['week1', 'week2'];
         
-        weeks.forEach((weekId, index) => {
-            const weekNum = index + 1;
+        weeks.forEach((weekId) => {
             const weekTab = document.getElementById(weekId);
             if (!weekTab) return;
 
+            const prefix = weekId === 'week1' ? 'w1' : 'w2';
             const categories = {
-                meat: document.getElementById(`w${weekNum}_summary_meat`),
-                produce: document.getElementById(`w${weekNum}_summary_produce`),
-                chilled: document.getElementById(`w${weekNum}_summary_chilled`),
-                pantry: document.getElementById(`w${weekNum}_summary_pantry`)
+                meat: document.getElementById(`${prefix}_summary_meat`),
+                produce: document.getElementById(`${prefix}_summary_produce`),
+                chilled: document.getElementById(`${prefix}_summary_chilled`),
+                pantry: document.getElementById(`${prefix}_summary_pantry`)
             };
 
             Object.values(categories).forEach(ul => { if (ul) ul.innerHTML = ''; });
@@ -2622,12 +2043,19 @@
                 const cat = cb.getAttribute('data-cat') || 'pantry';
                 const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
                 const { baseName, amount, unit } = parseIngredientDetails(rawText);
-                const key = cat + '_' + baseName.toLowerCase();
+                
+                const lowerName = baseName.toLowerCase();
+                let effectiveAmount = amount;
+                if (lowerName === 'pepper' || lowerName === 'salt' || lowerName === 'black pepper') {
+                    effectiveAmount = 0;
+                }
+
+                const key = cat + '_' + lowerName;
 
                 if (!summaryMap[key]) {
-                    summaryMap[key] = { baseName, cat, totalAmount: amount, unit, count: 1, rawText };
+                    summaryMap[key] = { baseName, cat, totalAmount: effectiveAmount, unit, count: 1, rawText };
                 } else {
-                    summaryMap[key].totalAmount += amount;
+                    summaryMap[key].totalAmount += effectiveAmount;
                     summaryMap[key].count += 1;
                 }
             });
@@ -2635,24 +2063,28 @@
             Object.values(summaryMap).forEach(item => {
                 if (!categories[item.cat]) return;
 
+                const lowerName = item.baseName.toLowerCase();
                 let weightDisplay = '';
-                if (item.totalAmount > 0) {
-                    if (item.unit === 'ml') {
-                        weightDisplay = item.totalAmount >= 1000 
-                            ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
-                            : item.totalAmount + 'ml ';
-                    } else if (item.unit === 'count') {
-                        weightDisplay = item.totalAmount + ' ';
-                    } else {
-                        weightDisplay = item.totalAmount >= 1000 
-                            ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
-                            : item.totalAmount + 'g ';
+                
+                if (lowerName !== 'pepper' && lowerName !== 'salt' && lowerName !== 'black pepper') {
+                    if (item.totalAmount > 0) {
+                        if (item.unit === 'ml') {
+                            weightDisplay = item.totalAmount >= 1000 
+                                ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
+                                : item.totalAmount + 'ml ';
+                        } else if (item.unit === 'count') {
+                            weightDisplay = item.totalAmount + ' ';
+                        } else {
+                            weightDisplay = item.totalAmount >= 1000 
+                                ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
+                                : item.totalAmount + 'g ';
+                        }
+                    } else if (item.count > 1) {
+                        weightDisplay = `x${item.count} `;
                     }
-                } else if (item.count > 1) {
-                    weightDisplay = `x${item.count} `;
                 }
 
-                const autoCheckId = `w${weekNum}_auto_summary_${item.cat}_${item.baseName.replace(/\s+/g, '_').toLowerCase()}`;
+                const autoCheckId = `${prefix}_auto_summary_${item.cat}_${item.baseName.replace(/\s+/g, '_').toLowerCase()}`;
                 
                 const matchingDailyChecks = Array.from(dailyCheckboxes).filter(cb => {
                     const rawText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
@@ -2729,13 +2161,19 @@
             const rawLabelText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
             const { baseName, amount, unit } = parseIngredientDetails(rawLabelText);
             const tags = getWeekDayTag(cb);
-            const key = cat + '_' + baseName.toLowerCase();
+            const lowerName = baseName.toLowerCase();
+            const key = cat + '_' + lowerName;
+
+            let effectiveAmount = amount;
+            if (lowerName === 'pepper' || lowerName === 'salt' || lowerName === 'black pepper') {
+                effectiveAmount = 0;
+            }
 
             if (!itemMap[key]) {
-                itemMap[key] = { baseName: baseName, cat: cat, totalAmount: amount, unit: unit, ids: [cb.id], tags: [...tags], isCustom: false };
+                itemMap[key] = { baseName: baseName, cat: cat, totalAmount: effectiveAmount, unit: unit, ids: [cb.id], tags: [...tags], isCustom: false };
             } else {
                 itemMap[key].ids.push(cb.id);
-                itemMap[key].totalAmount += amount;
+                itemMap[key].totalAmount += effectiveAmount;
                 tags.forEach(t => { if (!itemMap[key].tags.includes(t)) itemMap[key].tags.push(t); });
             }
         });
@@ -2755,18 +2193,21 @@
             const li = document.createElement('li');
             const isChecked = localStorage.getItem(shopItemId) === 'true';
 
+            const lowerName = item.baseName.toLowerCase();
             let weightPrefix = '';
-            if (item.totalAmount > 0) {
-                if (item.unit === 'ml') {
-                    weightPrefix = item.totalAmount >= 1000 
-                        ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
-                        : item.totalAmount + 'ml ';
-                } else if (item.unit === 'count') {
-                    weightPrefix = item.totalAmount + ' ';
-                } else {
-                    weightPrefix = item.totalAmount >= 1000 
-                        ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
-                        : item.totalAmount + 'g ';
+            if (lowerName !== 'pepper' && lowerName !== 'salt' && lowerName !== 'black pepper') {
+                if (item.totalAmount > 0) {
+                    if (item.unit === 'ml') {
+                        weightPrefix = item.totalAmount >= 1000 
+                            ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'l ' 
+                            : item.totalAmount + 'ml ';
+                    } else if (item.unit === 'count') {
+                        weightPrefix = item.totalAmount + ' ';
+                    } else {
+                        weightPrefix = item.totalAmount >= 1000 
+                            ? (item.totalAmount / 1000).toFixed(1).replace(/\.0$/, '') + 'kg ' 
+                            : item.totalAmount + 'g ';
+                    }
                 }
             }
 
@@ -2868,7 +2309,7 @@
 
     function clearAllCheckboxes() {
         triggerHaptic();
-        if (confirm('Reset all checked items across all weeks, custom items, and clear shopping list?')) {
+        if (confirm('Reset all checked items, custom items, and clear shopping list?')) {
             document.querySelectorAll('input[type="checkbox"]').forEach(cb => { cb.checked = false; });
             localStorage.clear();
             applySavedTheme();
