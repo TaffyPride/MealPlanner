@@ -133,7 +133,7 @@
             background: none;
             border: none;
             color: #94a3b8;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             padding: 0.4rem 0.1rem;
             border-radius: 10px;
@@ -142,7 +142,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 25%;
+            width: 20%;
             height: 50px;
             transition: all 0.2s ease;
             white-space: nowrap;
@@ -862,7 +862,7 @@
             </div>
         </div>
         <div id="shopping_empty" class="empty-state">
-            No items selected. Select ingredients from Quick, Comfort, Holiday, staple items, or add custom items above!
+            No items selected. Select ingredients from Quick, Comfort, Holiday, Dessert, staple items, or add custom items above!
         </div>
     </div>
 
@@ -1377,7 +1377,6 @@
         </div>
 
         <!-- Comfort Meal 6: Cottage Pie Yorkshire Pudding Bake -->
-
         <div class="meal-card" id="card_w2_d6">
             <div class="meal-header">
                 <input type="checkbox" id="w2_d6_done" onclick="event.stopPropagation()">
@@ -1413,6 +1412,7 @@
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- HOLIDAY MEALS -->
@@ -1642,6 +1642,81 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- DESSERT TAB -->
+	
+    <div id="dessert" class="tab-content">
+        <div class="tab-header-row">
+            <h2 class="section-title">🍰 Dessert & Sweet Treats</h2>
+            <button class="reset-top-btn" onclick="clearAllCheckboxes()">Reset</button>
+        </div>
+
+        <div class="shopping-card" id="shop_dessert">
+            <div class="shopping-header" onclick="toggleCard('shop_dessert')">
+                <h2 class="section-title">🛒 Ingredients</h2>
+                <span class="chevron"></span>
+            </div>
+            <div class="shopping-body">
+                <div class="week-actions-bar">
+                    <button class="select-all-btn" onclick="toggleSelectAll('dessert')">Select All</button>
+                    <button class="reset-week-btn" onclick="resetSingleWeek('dessert')">Reset</button>
+                </div>
+                <div class="shopping-grid">
+                    <div class="category-card">
+                        <h3>Meat & Poultry</h3>
+                        <ul id="dessert_summary_meat"></ul>
+                    </div>
+                    <div class="category-card">
+                        <h3>Produce</h3>
+                        <ul id="dessert_summary_produce"></ul>
+                    </div>
+                    <div class="category-card">
+                        <h3>Chilled, Dairy & Frozen</h3>
+                        <ul id="dessert_summary_chilled"></ul>
+                    </div>
+                    <div class="category-card">
+                        <h3>Pantry</h3>
+                        <ul id="dessert_summary_pantry"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-bottom:0.75rem;">Meal Instructions</h2>
+
+        <!-- Dessert Meal 1: Apple Crumble Baked Oats -->
+        <div class="meal-card" id="card_dessert_d1">
+            <div class="meal-header">
+                <input type="checkbox" id="dessert_d1_done" onclick="event.stopPropagation()">
+                <div class="meal-header-clickable" onclick="toggleCard('card_dessert_d1')">
+                    <h3 class="meal-title">1. Apple Crumble Baked Oats (Serves 2)</h3>
+                    <span class="chevron"></span>
+                </div>
+            </div>
+            <div class="meal-body">
+                <div class="ingredients-box">
+                    <strong>Ingredients:</strong>
+                    <ul>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="dessert_d1_i1"><span>75g Rolled Oats</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="dessert_d1_i2"><span>1 Banana</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="dessert_d1_i3"><span>1 Egg</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="dessert_d1_i4"><span>25g Vanilla Protein Powder</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="chilled" id="dessert_d1_i5"><span>140ml Milk</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="produce" id="dessert_d1_i6"><span>1 Cooking Apple</span></label></li>
+                        <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="dessert_d1_i7"><span>0.5 cup Granola</span></label></li>
+                    </ul>
+                </div>
+                <div class="instructions-list">
+                    <ol>
+                        <li><strong>Stew Apples:</strong> Dice 1 cooking apple and add to a pan with 1 tbsp water, ½ tbsp honey or brown sugar, and ½ tsp cinnamon. Simmer for 4–5 minutes until soft, then spoon into an air-fryer-safe baking dish.</li>
+                        <li><strong>Blend Batter:</strong> In a bowl or blender, mash ½ banana and mix with 75g rolled oats, 1 egg, 25g vanilla protein powder, 140ml milk, ½ tsp baking powder, and ½ tsp cinnamon until smooth.</li>
+                        <li><strong>Assemble:</strong> Pour the oat batter over the stewed apples, and scatter ½ cup granola evenly across the top for the crumble layer.</li>
+                        <li><strong>Air Fry:</strong> Place in your air fryer and bake at 180°C for 16–18 minutes until the centre is set and the granola is golden and crisp.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -1961,6 +2036,9 @@
     </button>
     <button class="tab-btn" onclick="openTab('holiday', this)">
         <span>Holiday</span>
+    </button>
+    <button class="tab-btn" onclick="openTab('dessert', this)">
+        <span>Dessert</span>
     </button>
 </nav>
 
@@ -2309,7 +2387,7 @@
 
     function resetSingleWeek(weekId) {
         triggerHaptic();
-        const menuNames = { week1: 'Quick', week2: 'Comfort', holiday: 'Holiday' };
+        const menuNames = { week1: 'Quick', week2: 'Comfort', holiday: 'Holiday', dessert: 'Dessert' };
         const menuName = menuNames[weekId] || 'Menu';
         if (confirm(`Reset all checkboxes for ${menuName}?`)) {
             const weekTab = document.getElementById(weekId);
@@ -2333,13 +2411,13 @@
     }
 
     function renderWeeklySummaries() {
-        const weeks = ['week1', 'week2', 'holiday'];
+        const weeks = ['week1', 'week2', 'holiday', 'dessert'];
         
         weeks.forEach((weekId) => {
             const weekTab = document.getElementById(weekId);
             if (!weekTab) return;
 
-            const prefixes = { week1: 'w1', week2: 'w2', holiday: 'holiday' };
+            const prefixes = { week1: 'w1', week2: 'w2', holiday: 'holiday', dessert: 'dessert' };
             const prefix = prefixes[weekId];
             const categories = {
                 meat: document.getElementById(`${prefix}_summary_meat`),
@@ -2350,7 +2428,6 @@
 
             Object.values(categories).forEach(ul => { if (ul) ul.innerHTML = ''; });
 
-            // Only grab ingredients from meal cards that are checked/selected
             const mealCards = weekTab.querySelectorAll('.meal-card');
             const summaryMap = {};
 
