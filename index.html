@@ -814,7 +814,7 @@
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_gravy"><span>Gravy Granules</span></label></li>
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_flour"><span>Plain Flour</span></label></li>
                     <li><label><input type="checkbox" class="ing-check" data-cat="pantry" id="staple_honey"><span>Honey</span></label></li>
-                </ul>               
+                </ul>                
                 <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
                     <button class="reset-week-btn" onclick="event.stopPropagation(); resetStapleGroup('staple')">Reset</button>
                 </div>
@@ -2307,7 +2307,7 @@
 
     function parseIngredientDetails(rawText) {
         let cleanText = rawText.replace(/\s*\(.*?\)/g, '').trim();
-        const matchUnit = cleanText.match(/^([\d\.\/]+)\s*(g|kg|ml|l|tbsp|tsp)\b/i);
+        const matchUnit = cleanText.match(/^([\d\.\/]+)\s*(g|kg|ml|l|tbsp|tsp|cup|cups)\b/i);
         let amount = 0;
         let unit = 'g';
 
@@ -2335,6 +2335,9 @@
             } else if (rawUnit === 'tsp') {
                 amount = num * 5;
                 unit = 'ml';
+            } else if (rawUnit.startsWith('cup')) {
+                amount = num * 200; // standard estimation for recipe aggregation
+                unit = 'g';
             } else {
                 amount = num;
                 unit = rawUnit;
@@ -2354,7 +2357,7 @@
         }
 
         let baseName = cleanText
-            .replace(/^([\d\.\/]+)\s*(?:g|kg|ml|l|tbsp|tsp|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves|clove)?\b/i, '')
+            .replace(/^([\d\.\/]+)\s*(?:g|kg|ml|l|tbsp|tsp|cup|cups|tin|tins|head|heads|bulb|bulbs|x|slice|slices|cloves|clove)?\b/i, '')
             .replace(/\b(diced|sliced|cubed|shredded|batons|wedges|thin|grated|cooked and cooled|cooked|beaten)\b/i, '')
             .trim();
         baseName = baseName.replace(/\b\w/g, c => c.toUpperCase()) || rawText;
@@ -2364,21 +2367,48 @@
 
     function getNormalizedKey(cat, baseName) {
         let name = baseName.toLowerCase().trim();
-        if (name.endsWith('s') && !name.endsWith('ss')) {
-            name = name.slice(0, -1);
+        
+        // Comprehensive normalization map to group similar items
+        const map = {
+            'baking potato': 'potatoes',
+            'potato': 'potatoes',
+            'potatoes (maris piper)': 'potatoes',
+            'sausage': 'sausages',
+            'pork sausage': 'sausages',
+            'pork sausages': 'sausages',
+            'carrot': 'carrots',
+            'onion': 'onions',
+            'medium onion': 'onions',
+            'mushroom': 'mushrooms',
+            'sliced mushroom': 'mushrooms',
+            'clove garlic': 'garlic',
+            'garlic clove': 'garlic',
+            'cloves garlic': 'garlic',
+            'chicken breast': 'chicken',
+            'chicken thigh': 'chicken',
+            'chicken thighs': 'chicken',
+            'chicken breast or thighs': 'chicken',
+            '5% fat beef mince': 'beef mince',
+            'beef mince': 'beef mince',
+            'bacon': 'bacon',
+            'smoked bacon lardons': 'lardons',
+            'smoked lardons': 'lardons'
+        };
+
+        if (map[name]) {
+            name = map[name];
+        } else {
+            if (name.endsWith('s') && !name.endsWith('ss')) {
+                name = name.slice(0, -1);
+            }
         }
-        if (name === 'baking potato' || name === 'potato') name = 'potatoes';
-        if (name === 'sausage') name = 'sausages';
-        if (name === 'carrot') name = 'carrots';
-        if (name === 'onion') name = 'onions';
-        if (name === 'mushroom') name = 'mushrooms';
-        if (name === 'clove garlic' || name === 'garlic clove') name = 'garlic';
+
         return cat + '_' + name;
     }
 
     function isNonQuantifiable(baseName) {
         const lowerName = baseName.toLowerCase();
-        const keywords = ['pepper', 'salt', 'herb', 'thyme', 'rosemary'];
+        const keywords = ['pepper', 'salt', 'herb', 'thyme', 'rosemary', 'dried herbs'];
         return keywords.some(kw => lowerName.includes(kw));
     }
 
