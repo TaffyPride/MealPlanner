@@ -2362,6 +2362,20 @@
         return { baseName, amount, unit };
     }
 
+    function getNormalizedKey(cat, baseName) {
+        let name = baseName.toLowerCase().trim();
+        if (name.endsWith('s') && !name.endsWith('ss')) {
+            name = name.slice(0, -1);
+        }
+        if (name === 'baking potato' || name === 'potato') name = 'potatoes';
+        if (name === 'sausage') name = 'sausages';
+        if (name === 'carrot') name = 'carrots';
+        if (name === 'onion') name = 'onions';
+        if (name === 'mushroom') name = 'mushrooms';
+        if (name === 'clove garlic' || name === 'garlic clove') name = 'garlic';
+        return cat + '_' + name;
+    }
+
     function isNonQuantifiable(baseName) {
         const lowerName = baseName.toLowerCase();
         const keywords = ['pepper', 'salt', 'herb', 'thyme', 'rosemary'];
@@ -2487,7 +2501,7 @@
                             effectiveAmount = 0;
                         }
 
-                        const key = cat + '_' + baseName.toLowerCase();
+                        const key = getNormalizedKey(cat, baseName);
 
                         if (!summaryMap[key]) {
                             summaryMap[key] = { baseName, cat, totalAmount: effectiveAmount, unit, count: 1, rawText };
@@ -2592,7 +2606,7 @@
             const rawLabelText = cb.nextElementSibling ? cb.nextElementSibling.textContent : '';
             const { baseName, amount, unit } = parseIngredientDetails(rawLabelText);
             const tags = getWeekDayTag(cb);
-            const key = cat + '_' + baseName.toLowerCase();
+            const key = getNormalizedKey(cat, baseName);
 
             let effectiveAmount = amount;
             if (isNonQuantifiable(baseName)) {
@@ -2609,7 +2623,7 @@
         });
 
         customExtras.forEach(item => {
-            const key = item.cat + '_' + item.text.toLowerCase();
+            const key = getNormalizedKey(item.cat, item.text);
             if (!itemMap[key]) {
                 itemMap[key] = { baseName: item.text, cat: item.cat, totalAmount: 0, unit: 'g', ids: [item.id], tags: [], isCustom: true };
             } else {
